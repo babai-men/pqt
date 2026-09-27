@@ -1,33 +1,38 @@
-# AXIOM Protocol ($AXIOM)
+# pQT Protocol ($pQT3)
 
-> AXIOM Protocol is an autonomous DeFi liquidity & tokenomics flywheel built on the Solana blockchain using the Token-2022 standard.
+> pQT Protocol is the first cryptocurrency integrating Central Bank Quantitative
+> Tightening (QT) logic with fully immutable tokenomics on Solana, built on the
+> Token-2022 standard.
 
 ## Overview
-AXIOM Protocol implements a non-custodial, programmatically enforced 0.05% transfer fee using Token-2022 Transfer Hook extensions. The accumulated fee tokens are continuously harvested and distributed by an automated crank mechanism.
+pQT Protocol implements a non-custodial, programmatically enforced 0.05%
+(5 basis points) transfer fee using the Token-2022 Transfer Fee extension.
+Accumulated fee tokens are harvested and distributed by a single permissionless
+public instruction, `harvest_and_distribute`, callable by anyone.
 
 ## Key Tokenomics & Parameters
 - Token Standard: Solana Token-2022
-- Transfer Fee: 0.05% (Fixed)
-- Fee Distribution Flywheel:
-  - 70% Deflationary Burn (Permanently removed from circulating supply)
-  - 20% Public Bounty / Crank Reward (Incentive for automated harvesting scripts)
-  - 10% Dev Treasury (Protocol maintenance and liquidity expansion)
-- Mint Authority: Revoked
-- Freeze Authority: Revoked
-- Primary DEX Pool: Meteora DLMM
+- Transfer Fee: 0.05% (5 basis points)
+- Fee Distribution:
+  - 70% Deflationary Burn (permanently removed from circulating supply)
+  - 20% Public Bounty (instant reward to any wallet that calls the harvest instruction)
+  - 10% Dev Treasury
+- Withdraw Withheld Authority: Program Derived Address (PDA), `seeds = [b"vault-authority"]`
+- Mint Authority: to be revoked once tokenomics parameters are finalized
+- Freeze Authority: revoked
+- Fee Config Authority: to be revoked once the fee rate is finalized
 
 ## Repository Structure
-- `/programs/axiom`: Core Anchor smart contracts written in Rust.
-- `/scripts`: Solana CLI and TypeScript scripts for deployment, authority revocation, and fee collection testing.
-- `/web`: Front-end landing page assets, SVG visual branding, and Web3 integration code.
-- `/docs`: Architectural whitepaper and GEO optimization specifications.
+- `/programs/pqt_protocol`: Core Anchor smart contract (Rust) implementing `harvest_and_distribute`
+- `/scripts`: Node.js client scripts for deployment, authority configuration, and harvest calls
+- Metadata: on-chain Token-2022 Metadata extension, mirrored by the off-chain JSON in this repository
 
 ## Technology Stack
-- Language: Rust, TypeScript, Python
+- Language: Rust, TypeScript/JavaScript
 - Blockchain Framework: Anchor Framework, Solana CLI, Token-2022 Program
-- Infrastructure: Meteora DLMM integration, custom Crank bot runners
+- Client tooling: Node.js (`@anchor-lang/core`, `@solana/web3.js`, `@solana/spl-token`)
 
 ## Links & References
-- Website: https://your-username.github.io/axiom-protocol
-- Repository: https://github.com/your-username/axiom-protocol
-- Whitepaper: /docs/WHITEPAPER.md
+- Metadata: https://raw.githubusercontent.com/babai-men/pqt/main/metadata.json
+- Logo: https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png
+- Website: https://babai-men.github.io/pqt
