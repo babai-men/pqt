@@ -15,26 +15,26 @@
        pQT Protocol — Web3 Neon Theme (Purple / Cyan / Mint)
        ========================================================================== */
     :root {
-      --bg-dark: #050608;
-      --bg-card: #0d0f14;
-      --bg-card-hover: #141720;
-      --bg-console: #08090d;
-      --border-color: #1e2230;
-      --border-hover: rgba(0, 210, 255, 0.4);
+      --bg-dark: #14161c;
+      --bg-card: #1a1c24;
+      --bg-card-hover: #20232d;
+      --bg-console: #101319;
+      --border-color: #2a2e3a;
+      --border-hover: rgba(110, 198, 220, 0.28);
 
-      --color-purple: #8b5cf6;
-      --color-cyan: #00d2ff;
-      --color-mint: #00ff87;
-      --color-amber: #f59e0b;
-      --color-red: #ef4444;
+      --color-purple: #a78bfa;
+      --color-cyan: #6ec6dc;
+      --color-mint: #6fd9a8;
+      --color-amber: #dba463;
+      --color-red: #e07a86;
 
-      --grad-logo: linear-gradient(135deg, #8b5cf6 0%, #00d2ff 50%, #00ff87 100%);
-      --grad-text: linear-gradient(110deg, #9b51e0 0%, #00d2ff 45%, #00ff87 100%);
-      --grad-glow: radial-gradient(circle at 50% 10%, rgba(0, 210, 255, 0.12) 0%, rgba(139, 92, 246, 0.06) 45%, transparent 75%);
+      --grad-logo: linear-gradient(135deg, #a78bfa 0%, #6ec6dc 50%, #6fd9a8 100%);
+      --grad-text: linear-gradient(110deg, #b39ddb 0%, #6ec6dc 45%, #6fd9a8 100%);
+      --grad-glow: radial-gradient(circle at 50% 10%, rgba(110, 198, 220, 0.08) 0%, rgba(167, 139, 250, 0.04) 45%, transparent 75%);
 
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --text-dim: #6b7280;
+      --text-main: #e9ebef;
+      --text-muted: #a6acb8;
+      --text-dim: #7b818d;
 
       --max-width: 1200px;
     }
@@ -62,7 +62,7 @@
       display: flex; justify-content: space-between; align-items: center;
       max-width: var(--max-width); margin: 0 auto; padding: 20px;
       border-bottom: 1px solid var(--border-color);
-      position: sticky; top: 0; background: rgba(5, 6, 8, 0.85);
+      position: sticky; top: 0; background: rgba(20, 22, 28, 0.85);
       backdrop-filter: blur(12px); z-index: 100;
     }
 
@@ -71,7 +71,7 @@
     .logo-ring {
       width: 44px; height: 44px; border-radius: 50%; padding: 2px;
       background: var(--grad-logo); display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 12px rgba(0, 210, 255, 0.3);
+      box-shadow: 0 0 10px rgba(110, 198, 220, 0.18);
     }
     .logo-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: var(--bg-dark); }
 
@@ -86,18 +86,18 @@
 
     /* Buttons */
     .btn-buy {
-      background: linear-gradient(135deg, #00ff87 0%, #00d2ff 100%);
-      color: #050608; font-weight: 800; font-size: 14px; border: none;
+      background: linear-gradient(135deg, #6fd9a8 0%, #6ec6dc 100%);
+      color: #14161c; font-weight: 800; font-size: 14px; border: none;
       padding: 10px 20px; border-radius: 10px; cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;
-      box-shadow: 0 0 15px rgba(0, 255, 135, 0.3);
+      box-shadow: 0 0 10px rgba(111, 217, 168, 0.2);
     }
-    .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 210, 255, 0.5); }
+    .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 0 16px rgba(110, 198, 220, 0.3); }
 
     .btn-primary {
-      background: var(--grad-logo); color: #050608; font-weight: 700; font-size: 14px;
+      background: var(--grad-logo); color: #14161c; font-weight: 700; font-size: 14px;
       border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;
-      transition: all 0.25s ease; box-shadow: 0 0 15px rgba(139, 92, 246, 0.3);
+      transition: all 0.25s ease; box-shadow: 0 0 10px rgba(167, 139, 250, 0.2);
     }
     .btn-primary:hover { opacity: 0.95; transform: translateY(-2px); }
 
@@ -113,7 +113,7 @@
 
     .badge {
       display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px;
-      background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3);
+      background: rgba(167, 139, 250, 0.08); border: 1px solid rgba(167, 139, 250, 0.22);
       color: var(--color-cyan); font-size: 13px; font-weight: 600; margin-bottom: 24px;
     }
 
@@ -126,7 +126,7 @@
     .banner-section { margin: 10px 0 60px; display: flex; justify-content: center; }
     .banner-img {
       width: 100%; height: auto; max-width: 1200px; border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(139, 92, 246, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 14px rgba(167, 139, 250, 0.1);
       transition: transform 0.3s ease;
     }
     .banner-img:hover { transform: translateY(-2px); }
@@ -147,8 +147,8 @@
     .about-card-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
     .about-highlight-box {
-      background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(0, 210, 255, 0.08) 100%);
-      border: 1px solid rgba(0, 210, 255, 0.25); border-radius: 16px; padding: 32px;
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(110, 198, 220, 0.08) 100%);
+      border: 1px solid rgba(110, 198, 220, 0.18); border-radius: 16px; padding: 32px;
       display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
     }
     .about-highlight-content { flex: 1; }
@@ -156,7 +156,7 @@
     .about-highlight-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
     /* Console */
-    .console-container { background: var(--bg-console); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; margin-bottom: 80px; box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); }
+    .console-container { background: var(--bg-console); border: 1px solid var(--border-color); border-radius: 20px; padding: 32px; margin-bottom: 80px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.35); }
     .console-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
     .contract-address-box {
       display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.03);
@@ -177,15 +177,15 @@
     .action-desc { font-size: 12px; color: var(--text-muted); }
 
     .terminal-box {
-      background: #000000; border: 1px solid #1a1d26; border-radius: 12px; padding: 16px;
+      background: #0b0c10; border: 1px solid #262a35; border-radius: 12px; padding: 16px;
       font-family: monospace; font-size: 12px; color: var(--color-mint); height: 280px;
       overflow-y: auto; display: flex; flex-direction: column;
     }
     .terminal-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #111; }
     .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-red { background: #ef4444; } .dot-yellow { background: #f59e0b; } .dot-green { background: #10b981; }
+    .dot-red { background: #e07a86; } .dot-yellow { background: #dba463; } .dot-green { background: #7ecb9e; }
     .log-line { margin-bottom: 6px; word-break: break-all; }
-    .log-info { color: #9ca3af; } .log-success { color: var(--color-mint); } .log-warn { color: var(--color-amber); }
+    .log-info { color: #a6acb8; } .log-success { color: var(--color-mint); } .log-warn { color: var(--color-amber); }
 
     /* Security */
     .security-section { margin-bottom: 80px; }
@@ -195,21 +195,21 @@
       text-decoration: none; color: var(--text-main); transition: all 0.3s ease;
       display: flex; flex-direction: column; justify-content: space-between;
     }
-    .security-card:hover { background: var(--bg-card-hover); border-color: var(--color-cyan); transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0, 210, 255, 0.15); }
+    .security-card:hover { background: var(--bg-card-hover); border-color: var(--color-cyan); transform: translateY(-4px); box-shadow: 0 8px 18px rgba(110, 198, 220, 0.1); }
     .security-icon { font-size: 28px; margin-bottom: 12px; }
     .security-name { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
     .security-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-    .security-badge { font-size: 11px; font-family: monospace; color: var(--color-mint); background: rgba(0, 255, 135, 0.08); padding: 4px 8px; border-radius: 6px; display: inline-block; width: fit-content; }
+    .security-badge { font-size: 11px; font-family: monospace; color: var(--color-mint); background: rgba(111, 217, 168, 0.08); padding: 4px 8px; border-radius: 6px; display: inline-block; width: fit-content; }
 
     /* Tokenomics */
     .tokenomics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 80px; }
     .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; transition: all 0.3s ease; }
-    .card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); box-shadow: 0 0 30px rgba(0, 210, 255, 0.12); transform: translateY(-3px); }
+    .card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); box-shadow: 0 0 18px rgba(110, 198, 220, 0.08); transform: translateY(-3px); }
     .card-value { font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 12px; }
     .card-value.purple { color: var(--color-purple); } .card-value.cyan { color: var(--color-cyan); } .card-value.mint { color: var(--color-mint); }
     .card-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
     .card-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
-    .code-inline { font-family: monospace; color: var(--color-cyan); background: rgba(0, 210, 255, 0.08); padding: 2px 6px; border-radius: 4px; }
+    .code-inline { font-family: monospace; color: var(--color-cyan); background: rgba(110, 198, 220, 0.08); padding: 2px 6px; border-radius: 4px; }
 
     /* FAQ */
     .faq-section { margin-bottom: 80px; }
@@ -375,7 +375,7 @@
           <button class="action-btn" id="btn-harvest" onclick="executeHarvestAndDistribute()" disabled style="opacity: 0.5;">
             <div class="action-title">
               <span>🔥 Execute Harvest &amp; Distribute</span>
-              <span style="font-size: 11px; color: var(--color-mint); background: rgba(0,255,135,0.1); padding: 2px 6px; border-radius: 4px;">Public Call</span>
+              <span style="font-size: 11px; color: var(--color-mint); background: rgba(111, 217, 168,0.1); padding: 2px 6px; border-radius: 4px;">Public Call</span>
             </div>
             <div class="action-desc">
               Calls <code class="code-inline">harvest_and_distribute</code>: collects fees, burns 70%, sends 20% bounty to you, and 10% to treasury.
@@ -400,7 +400,7 @@
             <div class="dot dot-red"></div>
             <div class="dot dot-yellow"></div>
             <div class="dot dot-green"></div>
-            <span style="color: #6b7280; font-size: 11px; margin-left: 8px;">pqt-solana-cli v1.1.0 — web3-terminal</span>
+            <span style="color: #7b818d; font-size: 11px; margin-left: 8px;">pqt-solana-cli v1.1.0 — web3-terminal</span>
           </div>
         </div>
       </div>
@@ -429,7 +429,7 @@
             <div class="security-name">RugCheck.xyz</div>
             <div class="security-desc">Automated smart contract risk assessment verifying revoked mint authority and liquidity lock parameters.</div>
           </div>
-          <div class="security-badge" style="color: var(--color-cyan); background: rgba(0, 210, 255, 0.08);">Good Score / Low Risk ↗</div>
+          <div class="security-badge" style="color: var(--color-cyan); background: rgba(110, 198, 220, 0.08);">Good Score / Low Risk ↗</div>
         </a>
 
         <a id="link-jupiter" href="https://jup.ag" target="_blank" class="security-card">
@@ -438,7 +438,7 @@
             <div class="security-name">Jupiter AG</div>
             <div class="security-desc">The leading liquidity aggregator on Solana for seamless low-slippage trading and direct $pQT swaps.</div>
           </div>
-          <div class="security-badge" style="color: var(--color-mint); background: rgba(0, 255, 135, 0.08);">Direct Swap / Buy ↗</div>
+          <div class="security-badge" style="color: var(--color-mint); background: rgba(111, 217, 168, 0.08);">Direct Swap / Buy ↗</div>
         </a>
 
         <a id="link-dexscreener" href="https://dexscreener.com" target="_blank" class="security-card">
@@ -447,7 +447,7 @@
             <div class="security-name">DexScreener</div>
             <div class="security-desc">Track real-time trading charts, pair volume, liquidity burn status, and dynamic price feeds.</div>
           </div>
-          <div class="security-badge" style="color: var(--color-purple); background: rgba(139, 92, 246, 0.08);">Live Analytics ↗</div>
+          <div class="security-badge" style="color: var(--color-purple); background: rgba(167, 139, 250, 0.08);">Live Analytics ↗</div>
         </a>
       </div>
     </section>
@@ -528,7 +528,7 @@
     // ======================= Network Configuration =======================
     // Single source of truth for the target cluster.
     // Set to "devnet" if the program is deployed on devnet.
-    const NETWORK = "mainnet-beta"; // "mainnet-beta" | "devnet"
+    const NETWORK = "devnet"; // "mainnet-beta" | "devnet" — программа и mint пока живут только на devnet
     const RPC_URL = NETWORK === "devnet"
       ? "https://api.devnet.solana.com"
       : "https://api.mainnet-beta.solana.com";
