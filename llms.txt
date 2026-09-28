@@ -1,4 +1,4 @@
-# pQT Protocol ($pQT3)
+# pQT Protocol ($pQT)
 
 > pQT Protocol is the first cryptocurrency integrating Central Bank Quantitative
 > Tightening (QT) logic with fully immutable tokenomics on Solana, built on the
@@ -14,9 +14,9 @@ public instruction, `harvest_and_distribute`, callable by anyone.
 - Token Standard: Solana Token-2022
 - Transfer Fee: 0.05% (5 basis points)
 - Fee Distribution:
-  - 70% Deflationary Burn (permanently removed from circulating supply)
-  - 20% Public Bounty (instant reward to any wallet that calls the harvest instruction)
-  - 10% Dev Treasury
+  - 80% Deflationary Burn (permanently removed from circulating supply)
+  - 15% Public Bounty (instant reward to any wallet that calls the harvest instruction)
+  - 5% Dev Treasury
 - Withdraw Withheld Authority: Program Derived Address (PDA), `seeds = [b"vault-authority"]`
 - Mint Authority: to be revoked once tokenomics parameters are finalized
 - Freeze Authority: revoked
@@ -36,3 +36,4 @@ public instruction, `harvest_and_distribute`, callable by anyone.
 - Metadata: https://raw.githubusercontent.com/babai-men/pqt/main/metadata.json
 - Logo: https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png
 - Website: https://babai-men.github.io/pqt
+- X (Twitter): https://x.com/pQTprotocol
