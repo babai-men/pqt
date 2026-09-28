@@ -1,79 +1,76 @@
 # Security Policy — pQT Protocol
 
-## Сообщить об уязвимости
+## Reporting a Vulnerability
 
-Если вы обнаружили уязвимость в смарт-контракте pQT Protocol
-(`programs/pqt_protocol`) или в любой части инфраструктуры проекта
-(веб-сайт, скрипты деплоя, конфигурация authority), пожалуйста,
-сообщите об этом **приватно**, до какой-либо публикации:
+If you believe you have found a security vulnerability in the pQT Protocol smart
+contract (`programs/pqt_protocol`) or in any related project infrastructure
+(website, deployment scripts, token authority configuration), please report it
+**privately** before any public disclosure:
 
-- Email: ЗАПОЛНИТЕ@ваш-домен
-- Telegram: ЗАПОЛНИТЕ
+- Email: pqtprotocol@gmail.com
+- X (direct message): [@pQTprotocol](https://x.com/pQTprotocol)
 
-Не создавайте публичные GitHub Issues и не публикуйте детали
-уязвимости в публичных чатах/соцсетях до тех пор, пока проблема не
-будет исправлена и подтверждена командой.
+Please do **not** open public GitHub issues or discuss the details in public
+chats or social media until the issue has been fixed and confirmed.
 
-При обращении, пожалуйста, укажите:
-- Краткое описание уязвимости и её потенциальное влияние (потеря
-  средств, отказ в обслуживании, обход прав доступа и т.д.).
-- Шаги для воспроизведения или PoC (proof of concept), если возможно.
-- Затронутый адрес программы (Program ID) и/или сеть (mainnet/devnet).
-- Ваши контактные данные для обратной связи.
+When reporting, please include:
 
-## Область действия
+- A short description of the issue and its potential impact (loss of funds,
+  denial of service, privilege bypass, etc.).
+- Steps to reproduce or a proof of concept, if possible.
+- The affected Program ID and network (mainnet-beta / devnet).
+- Your contact details so we can follow up.
 
-В область действия входят:
-- Код смарт-контракта в `programs/pqt_protocol` (инструкция
-  `harvest_and_distribute`, логика расчёта долей, PDA-деривация).
-- Конфигурация authority на Mint (`withdraw withheld authority`,
-  Fee Config authority), если она позволяет обойти заявленную
-  токеномику 70% / 20% / 10%.
-- Клиентские скрипты в `/scripts`, если ошибка в них может привести
-  к потере средств пользователя при обычном использовании.
+## Scope
 
-Вне области действия:
-- Уязвимости в самом Solana runtime, Token-2022 Program или Anchor
-  Framework — о них следует сообщать напрямую в соответствующие
-  проекты (см. ссылки ниже).
-- Фишинговые сайты-подделки, не принадлежащие проекту.
-- Проблемы, требующие физического доступа к устройству пользователя
-  или компрометации его приватного ключа/seed-фразы.
+In scope:
 
-## Вознаграждение
+- The smart contract code in `programs/pqt_protocol` (the `harvest_and_distribute`
+  instruction, the 80% / 15% / 5% distribution math, PDA derivation and
+  account validation).
+- Token authority configuration (withdraw-withheld authority, fee config
+  authority, mint authority) when it allows bypassing the documented tokenomics.
+- Client scripts in `/scripts` if a flaw can lead to loss of user funds during
+  normal use.
 
-На данный момент проект не выплачивает баг-баунти на регулярной
-основе. Мы можем на своё усмотрение выплатить вознаграждение за
-критическую уязвимость (например, позволяющую украсть средства из
-Vault или обойти расчёт 70/20/10) после её подтверждения и
-устранения — размер определяется индивидуально, исходя из серьёзности
-находки и объёма средств под риском на момент обращения.
+Out of scope:
 
-Условие выплаты: информация об уязвимости не должна быть раскрыта
-третьим лицам до того, как исправление будет внедрено и подтверждено.
-Эксплуатация уязвимости без явного согласия команды не допускается.
+- Vulnerabilities in the Solana runtime, the Token-2022 program or the Anchor
+  framework itself. Please report those directly to the respective projects.
+- Phishing sites or impersonations that are not operated by this project.
+- Issues that require physical access to a user's device or a compromised
+  private key or seed phrase.
 
-> Обновите этот раздел, если планируете формальную программу
-> баунти с фиксированными суммами — пример структуры можно
-> посмотреть в [SECURITY.md Solana Foundation](https://github.com/solana-labs/solana/blob/master/SECURITY.md).
+## Rewards
 
-## Раскрытие информации (Disclosure)
+This project does not run a regular bug bounty program. At our sole discretion
+we may reward a critical finding (for example, one that allows draining the
+Vault or bypassing the fee distribution) after it has been verified and fixed.
+The amount depends on severity and on the value at risk at the time of the
+report.
 
-Мы придерживаемся принципа responsible disclosure:
-1. Вы сообщаете об уязвимости приватно по контактам выше.
-2. Мы подтверждаем получение и по возможности статус в разумный срок.
-3. После выпуска и подтверждения исправления детали могут быть
-   раскрыты публично — по согласованию с исследователем.
+A reward is only considered if details of the issue have not been shared with
+third parties before a fix has been released and verified. Exploiting the issue
+without our explicit consent is not permitted.
 
-## Аудит
+## Disclosure Process
 
-На данный момент независимый аудит смарт-контракта не проводился
-(`auditors: "None"` в `security.txt`). Это будет обновлено здесь и в
-security.txt, если аудит будет проведён.
+We follow responsible disclosure:
 
-## Дополнительно
+1. You report the issue privately using the contacts above.
+2. We acknowledge receipt and share status updates within a reasonable time.
+3. Once a fix is released and verified, details may be published, in
+   coordination with the reporter.
 
-- Исходный код: https://github.com/babai-men/pqt
-- Machine-readable security.txt: встроен в бинарник программы
-  (см. [solana-security-txt](https://crates.io/crates/solana-security-txt))
-  и доступен через Solana Explorer по адресу программы.
+## Audits
+
+No independent audit of the smart contract has been performed yet (the
+`auditors` field in the on-chain security.txt is set to `None`). This document
+and the security.txt will be updated if an audit is completed.
+
+## More Information
+
+- Source code: https://github.com/babai-men/pqt
+- Machine-readable `security.txt` is embedded in the program binary and can be
+  viewed in Solana Explorer on the program's Security tab
+  (see [solana-security-txt](https://crates.io/crates/solana-security-txt)).
