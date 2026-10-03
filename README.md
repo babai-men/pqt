@@ -1,4 +1,4 @@
-<h1 align="center">pQT Protocol ($pQT3)</h1>
+<h1 align="center">pQT Protocol ($pQT)</h1>
 
 <p align="center">
   <b>Immutable Quantitative Tightening Tokenomics on Solana</b>
@@ -6,127 +6,132 @@
 
 <p align="center">
   <a href="https://solana.com"><img src="https://img.shields.io/badge/Solana-Token--2022-3772FF?style=for-the-badge&logo=solana" alt="Solana Token-2022"></a>
-  <a href="#-механика-протокола-и-архитектура"><img src="https://img.shields.io/badge/Transfer_Fee-0.05%25_Fixed-FF7A59?style=for-the-badge" alt="Transfer Fee"></a>
+  <a href="#-protocol-mechanics-and-architecture"><img src="https://img.shields.io/badge/Transfer_Fee-0.05%25_Fixed-FF7A59?style=for-the-badge" alt="Transfer Fee"></a>
   <a href="https://www.anchor-lang.com"><img src="https://img.shields.io/badge/Anchor-v1.2+-C9A227?style=for-the-badge" alt="Anchor"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-82E6AB?style=for-the-badge" alt="License"></a>
 </p>
 
 ---
 
-## 📌 Обзор
+## 📌 Overview
 
-**pQT Protocol** — первая криптовалюта, переносящая логику количественного ужесточения
-центральных банков (Quantitative Tightening, QT) в полностью неизменяемую токеномику
-на блокчейне Solana, построенную на стандарте **Token-2022**.
+**pQT Protocol** is the first cryptocurrency that brings Central Bank Quantitative
+Tightening (QT) logic into fully immutable tokenomics on Solana, built on the
+**Token-2022** standard.
 
-Протокол использует встроенное расширение **Transfer Fee Extension** (0.05%) и
-передаёт право на изъятие удержанных комиссий (`withdraw withheld authority`)
-программному Derived Address (**PDA**), полностью управляемому смарт-контрактом.
+The protocol uses the built-in **Transfer Fee extension** (0.05%) and hands the
+right to withdraw withheld fees (`withdraw_withheld_authority`) to a
+**Program Derived Address (PDA)** controlled entirely by a smart contract.
 
-Команда проекта не имеет отдельного ключа для сбора или вывода накопленных
-комиссий: как только withdraw-withheld authority передан PDA, эта операция
-доступна только через саму программу и может быть инициирована кем угодно.
+The team holds no separate key for collecting or withdrawing accumulated fees:
+once the withdraw-withheld authority is assigned to the PDA, that operation is
+only possible through the program itself, and anyone can trigger it.
 
 ---
 
-## ⚡ Механика протокола и архитектура
+## ⚡ Protocol Mechanics and Architecture
 
-### 1. Начисление комиссии (0.05%)
-При любом переводе $pQT3 программа Token-2022 автоматически удерживает **5 базисных
-пунктов (0.05%)** от суммы перевода прямо на токен-аккаунте получателя, в виде
-удерживаемого баланса (`withheld_amount`).
+### 1. Fee accrual (0.05%)
+On every $pQT transfer, the Token-2022 program automatically withholds
+**5 basis points (0.05%)** of the transferred amount on the recipient's token
+account, as a withheld balance (`withheld_amount`).
 
-### 2. Децентрализованный сбор (PDA Fee Authority)
-Право `withdraw_withheld_authority` закреплено за PDA смарт-контракта:
+### 2. Decentralized collection (PDA fee authority)
+The `withdraw_withheld_authority` is assigned to the program's PDA:
 
 ```
 seeds = [b"vault-authority"]
 ```
 
-PDA не имеет приватного ключа — программа подписывает CPI от его имени через
-`invoke_signed`/`with_signer`, поэтому вывод комиссий невозможен в обход контракта.
+The PDA has no private key. The program signs CPIs on its behalf via
+`invoke_signed` / `with_signer`, so fees cannot be withdrawn without going
+through the contract.
 
-### 3. Публичная инструкция `harvest_and_distribute`
-Любой пользователь или бот вызывает публичную инструкцию `harvest_and_distribute`.
-В рамках **одной атомарной транзакции** происходит:
+### 3. Public instruction `harvest_and_distribute`
+Any user or bot can call the public `harvest_and_distribute` instruction.
+Within **a single atomic transaction**:
 
-1. **Harvest:** контракт собирает удержанные комиссии со всех переданных
-   токен-аккаунтов на сам Mint (`harvest_withheld_tokens_to_mint`).
-2. **Withdraw:** контракт выводит эти комиссии с Mint на собственный Vault
-   (`withdraw_withheld_tokens_from_mint`), подписываясь PDA.
-3. **🔥 Burn (70%):** CPI-сжигание 70% собранной суммы — уменьшение circulating supply.
-4. **⚡ Public Bounty (20%):** мгновенный перевод 20% на счёт вызывающего — стимул
-   для ботов и любых участников сети запускать сбор.
-5. **🛡️ Dev Treasury (10%):** перевод оставшихся 10% в резерв разработчика.
+1. **Harvest:** the contract collects withheld fees from all supplied token
+   accounts into the Mint (`harvest_withheld_tokens_to_mint`).
+2. **Withdraw:** the contract withdraws those fees from the Mint into its own
+   Vault (`withdraw_withheld_tokens_from_mint`), signing with the PDA.
+3. **🔥 Burn (80%):** CPI burn of 80% of the collected amount, reducing
+   circulating supply.
+4. **⚡ Public Bounty (15%):** instant transfer of 15% to the caller, an
+   incentive for bots and anyone else to run the harvest.
+5. **🛡️ Dev Treasury (5%):** the remaining 5% is sent to the developer reserve.
 
 ---
 
-## 🔄 Схема работы (Sequence Diagram)
+## 🔄 Sequence Diagram
 
 ```mermaid
 sequenceDiagram
     autonumber
-    actor Caller as Любой пользователь / бот
+    actor Caller as Any user / bot
     participant Contract as pQT Program (Anchor, PDA vault-authority)
     participant Token2022 as Solana Token-2022 Program
-    participant Accounts as Токен-аккаунты пользователей
-    participant Vault as Vault (ATA PDA)
-    participant Treasury as Dev Treasury Account
+    participant Accounts as User token accounts
+    participant Vault as Vault (PDA's ATA)
+    participant Treasury as Dev Treasury account
 
-    Note over Accounts, Token2022: Удержание 0.05% при каждом переводе
-    Caller->>Contract: Вызов harvest_and_distribute()
+    Note over Accounts, Token2022: 0.05% withheld on every transfer
+    Caller->>Contract: Call harvest_and_distribute()
 
     rect rgb(25, 25, 35)
-        Note over Contract, Token2022: Harvest → Withdraw (подпись PDA vault-authority)
+        Note over Contract, Token2022: Harvest → Withdraw (signed by PDA vault-authority)
         Contract->>Token2022: harvest_withheld_tokens_to_mint(accounts)
-        Token2022->>Contract: Комиссии собраны на Mint
+        Token2022->>Contract: Fees collected on the Mint
         Contract->>Token2022: withdraw_withheld_tokens_from_mint()
-        Token2022->>Vault: Перевод комиссий на Vault
+        Token2022->>Vault: Fees moved to the Vault
     end
 
     rect rgb(35, 25, 25)
-        Note over Contract, Token2022: 🔥 CPI Burn (70%)
-        Contract->>Token2022: burn(70% из Vault)
-        Token2022-->>Vault: Токены уничтожены
+        Note over Contract, Token2022: 🔥 CPI Burn (80%)
+        Contract->>Token2022: burn(80% from Vault)
+        Token2022-->>Vault: Tokens destroyed
     end
 
     rect rgb(25, 35, 25)
-        Note over Contract, Caller: ⚡ CPI Transfer (20%)
-        Contract->>Token2022: transfer_checked(20% из Vault → Caller)
-        Token2022-->>Caller: Мгновенная выплата Bounty
+        Note over Contract, Caller: ⚡ CPI Transfer (15%)
+        Contract->>Token2022: transfer_checked(15% from Vault → Caller)
+        Token2022-->>Caller: Instant bounty payout
     end
 
     rect rgb(25, 25, 45)
-        Note over Contract, Treasury: 🛡️ CPI Transfer (10%)
-        Contract->>Token2022: transfer_checked(10% из Vault → Treasury)
-        Token2022-->>Treasury: Пополнение Dev-резерва
+        Note over Contract, Treasury: 🛡️ CPI Transfer (5%)
+        Contract->>Token2022: transfer_checked(5% from Vault → Treasury)
+        Token2022-->>Treasury: Dev reserve topped up
     end
 ```
 
 ---
 
-## Токеномика
+## Tokenomics
 
-| Параметр | Значение |
+| Parameter | Value |
 |---|---|
-| Стандарт | Solana Token-2022 |
+| Standard | Solana Token-2022 |
 | Transfer Fee | 0.05% (5 bps) |
-| Распределение комиссии | 70% Burn / 20% Bounty / 10% Dev Treasury |
+| Fee distribution | 80% Burn / 15% Bounty / 5% Dev Treasury |
 | Withdraw Withheld Authority | PDA (`seeds = [b"vault-authority"]`) |
-| Freeze Authority | Отозвана |
-| Mint Authority | Будет отозвана после финализации параметров |
-| Fee Config Authority | Будет отозвана после финализации ставки комиссии |
+| Freeze Authority | Revoked |
+| Mint Authority | To be revoked once parameters are finalized |
+| Fee Config Authority | To be revoked once the fee rate is finalized |
 
-> До момента реального отзыва Mint и Fee Config authorities публичные материалы
-> не должны утверждать, что они уже отозваны — проверяйте актуальное состояние
-> командой `spl-token display <MINT>` перед публикацией любых финальных текстов.
+> Until the Mint and Fee Config authorities are actually revoked, public
+> materials must not claim that they already are. Always verify the current
+> on-chain state with `spl-token display <MINT>` before publishing final texts.
 
 ## Repository Structure
-- `/programs/pqt_protocol` — контракт на Anchor (Rust), инструкция `harvest_and_distribute`
-- `/scripts` — Node.js-скрипты для деплоя, настройки authority и вызова harvest
-- `metadata.json` — off-chain метаданные, зеркалирующие on-chain Token-2022 Metadata
+
+- `/programs/pqt_protocol`: Anchor smart contract (Rust), the `harvest_and_distribute` instruction
+- `/scripts`: Node.js scripts for deployment, authority setup and calling harvest
+- `metadata.json`: off-chain metadata mirroring the on-chain Token-2022 Metadata
 
 ## Links & References
+
 - Metadata: https://raw.githubusercontent.com/babai-men/pqt/main/metadata.json
 - Logo: https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png
 - Website: https://babai-men.github.io/pqt
+- X (Twitter): [@pQTprotocol](https://x.com/pQTprotocol)
