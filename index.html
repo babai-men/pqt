@@ -253,6 +253,7 @@
       <a href="#security" class="nav-link">Security Hub</a>
       <a href="#tokenomics" class="nav-link">Tokenomics</a>
       <a href="#faq" class="nav-link">FAQ</a>
+      <a href="https://x.com/pQTprotocol" target="_blank" rel="noopener noreferrer" class="nav-link">X</a>
     </nav>
 
     <div class="header-actions">
@@ -272,7 +273,7 @@
         <span class="gradient-text">Powered by Solana Token-2022</span>
       </h1>
       <p class="hero-subtitle">
-        A fully decentralized, supply-tightening monetary protocol featuring an automated 70% burn rate on withheld transfer fees, instant Crank Bounty payouts, and zero token inflation.
+        A fully decentralized, supply-tightening monetary protocol featuring an automated 80% burn rate on withheld transfer fees, instant Crank Bounty payouts, and zero token inflation.
       </p>
       <div class="hero-actions">
         <a id="btn-buy-hero" href="https://jup.ag" target="_blank" class="btn-buy" style="padding: 12px 28px; font-size: 16px;">🛒 Buy $pQT on Jupiter</a>
@@ -294,11 +295,11 @@
       </div>
       <div class="stat-card">
         <div class="stat-label">Burn Allocation</div>
-        <div class="stat-value" style="color: var(--color-purple);">70% Total Fee</div>
+        <div class="stat-value" style="color: var(--color-purple);">80% Total Fee</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Crank Bounty</div>
-        <div class="stat-value" style="color: var(--color-cyan);">20% Instant</div>
+        <div class="stat-value" style="color: var(--color-cyan);">15% Instant</div>
       </div>
       <div class="stat-card">
         <div class="stat-label">Token Standard</div>
@@ -338,7 +339,7 @@
           <div class="about-card-icon">🤖</div>
           <h3 class="about-card-title">Permissionless Execution</h3>
           <p class="about-card-text">
-            Harvesting is entirely decentralized. By offering an instant 20% Crank Bounty on all harvested tokens, keeper bots and community members compete to execute harvest instructions, guaranteeing continuous supply destruction.
+            Harvesting is entirely decentralized. By offering an instant 15% Crank Bounty on all harvested tokens, keeper bots and community members compete to execute harvest instructions, guaranteeing continuous supply destruction.
           </p>
         </div>
       </div>
@@ -360,7 +361,7 @@
         <div>
           <h2 style="font-size: 22px; font-weight: 800;">Smart Contract Interaction Console</h2>
           <p style="font-size: 13px; color: var(--text-muted);">
-            Trigger on-chain fee harvesting, collect 20% crank bounty, and execute programmed token burn.
+            Trigger on-chain fee harvesting, collect 15% crank bounty, and execute programmed token burn.
           </p>
         </div>
         <div class="contract-address-box">
@@ -378,7 +379,7 @@
               <span style="font-size: 11px; color: var(--color-mint); background: rgba(111, 217, 168,0.1); padding: 2px 6px; border-radius: 4px;">Public Call</span>
             </div>
             <div class="action-desc">
-              Calls <code class="code-inline">harvest_and_distribute</code>: collects fees, burns 70%, sends 20% bounty to you, and 10% to treasury.
+              Calls <code class="code-inline">harvest_and_distribute</code>: collects fees, burns 80%, sends 15% bounty to you, and 5% to treasury.
             </div>
           </button>
 
@@ -459,7 +460,7 @@
 
       <div class="tokenomics-grid">
         <div class="card">
-          <div class="card-value purple">70%</div>
+          <div class="card-value purple">80%</div>
           <h3 class="card-title">🔥 Programmed Burn</h3>
           <p class="card-desc">
             The majority of all withheld transfer fees are permanently destroyed on-chain via the <code class="code-inline">token_2022::burn</code> instruction, creating a continuous autonomous deflationary spiral.
@@ -467,7 +468,7 @@
         </div>
 
         <div class="card">
-          <div class="card-value cyan">20%</div>
+          <div class="card-value cyan">15%</div>
           <h3 class="card-title">⚡ Crank Bounty Reward</h3>
           <p class="card-desc">
             An instant financial reward paid out directly to any public wallet or keeper bot that executes the fee harvesting instruction, ensuring decentralized protocol maintenance.
@@ -475,7 +476,7 @@
         </div>
 
         <div class="card">
-          <div class="card-value mint">10%</div>
+          <div class="card-value mint">5%</div>
           <h3 class="card-title">🛡️ Treasury Vault</h3>
           <p class="card-desc">
             Transferred directly to a PDA-controlled protocol treasury account to fund RPC infrastructure, custom indexers, security audits, and continuous dApp core developments.
@@ -492,7 +493,7 @@
       <div class="faq-grid">
         <div class="faq-card">
           <div class="faq-q">What makes $pQT tokenomics genuinely deflationary?</div>
-          <div class="faq-a">Unlike standard tokens, $pQT utilizes Solana Token-2022 Transfer Fee extensions. Every transfer holds back 0.05%, and 70% of those withheld tokens are permanently burned upon execution, reducing total circulating supply continuously.</div>
+          <div class="faq-a">Unlike standard tokens, $pQT utilizes Solana Token-2022 Transfer Fee extensions. Every transfer holds back 0.05%, and 80% of those withheld tokens are permanently burned upon execution, reducing total circulating supply continuously.</div>
         </div>
 
         <div class="faq-card">
@@ -501,8 +502,8 @@
         </div>
 
         <div class="faq-card">
-          <div class="faq-q">How does the 20% Crank Bounty incentive work?</div>
-          <div class="faq-a">Anyone can trigger the <code class="code-inline">harvest_and_distribute</code> contract instruction. When invoked, 20% of all accumulated fees across token accounts are instantly sent to the transaction caller's wallet as a bounty.</div>
+          <div class="faq-q">How does the 15% Crank Bounty incentive work?</div>
+          <div class="faq-a">Anyone can trigger the <code class="code-inline">harvest_and_distribute</code> contract instruction. When invoked, 15% of all accumulated fees across token accounts are instantly sent to the transaction caller's wallet as a bounty.</div>
         </div>
 
         <div class="faq-card">
@@ -519,6 +520,7 @@
       <a id="link-footer-jupiter" href="https://jup.ag" target="_blank" class="footer-link">Jupiter Swap</a>
       <a id="link-footer-rugcheck" href="https://rugcheck.xyz" target="_blank" class="footer-link">RugCheck Audit</a>
       <a id="link-footer-dexscreener" href="https://dexscreener.com" target="_blank" class="footer-link">DexScreener</a>
+      <a href="https://x.com/pQTprotocol" target="_blank" rel="noopener noreferrer" class="footer-link">X (Twitter)</a>
     </div>
     <p>© 2026 pQT Protocol. All rights reserved. Powered by Solana Token-2022 Extensions.</p>
   </footer>
@@ -528,7 +530,7 @@
     // ======================= Network Configuration =======================
     // Single source of truth for the target cluster.
     // Set to "devnet" if the program is deployed on devnet.
-    const NETWORK = "devnet"; // "mainnet-beta" | "devnet" — программа и mint пока живут только на devnet
+    const NETWORK = "devnet"; // "mainnet-beta" | "devnet" — the program and mint currently exist on devnet only
     const RPC_URL = NETWORK === "devnet"
       ? "https://api.devnet.solana.com"
       : "https://api.mainnet-beta.solana.com";
