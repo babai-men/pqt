@@ -28,6 +28,7 @@
   ],
   "extensions": {
     "website": "https://pqt-protocol.netlify.app",
-    "twitter": "https://x.com/pQTprotocol"
+    "twitter": "https://x.com/pQTprotocol",
+    "github": "https://github.com/babai-men/pqt"
   }
 }
