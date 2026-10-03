@@ -29,14 +29,5 @@
   "extensions": {
     "website": "https://pqt-protocol.netlify.app",
     "twitter": "https://x.com/pQTprotocol"
-  },
-  "properties": {
-    "files": [
-      {
-        "uri": "https://pqt-protocol.netlify.app/pqt-logo.png",
-        "type": "image/png"
-      }
-    ],
-    "category": "image"
   }
 }
