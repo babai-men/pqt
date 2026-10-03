@@ -2,7 +2,7 @@
   "name": "pQT Protocol",
   "symbol": "pQT",
   "description": "The first cryptocurrency integrating Central Bank Quantitative Tightening (QT) logic with fully immutable tokenomics. All administrative privileges (Mint, Freeze, and Fee Config authorities) are permanently revoked. Tax collection is governed by a public smart contract: 80% of transfer fees (0.05%) are burned for balance-sheet contraction, 5% goes to dev treasury, and 15% is instantly awarded to ANY caller who triggers the harvest smart contract.",
-  "image": "https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png",
+  "image": "https://babai-men.github.io/pqt/pqt-logo.png",
   "external_url": "https://babai-men.github.io/pqt",
   "attributes": [
     {
@@ -33,7 +33,7 @@
   "properties": {
     "files": [
       {
-        "uri": "https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png",
+        "uri": "https://babai-men.github.io/pqt/pqt-logo.png",
         "type": "image/png"
       }
     ],
