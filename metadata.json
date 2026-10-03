@@ -1,7 +1,7 @@
 {
-  "name": "pQT Protocol v3",
-  "symbol": "pQT3",
-  "description": "The first cryptocurrency integrating Central Bank Quantitative Tightening (QT) logic with fully immutable tokenomics. All administrative privileges (Mint, Freeze, and Fee Config authorities) are permanently revoked. Tax collection is governed by a public smart contract: 70% of transfer fees (0.05%) are burned for balance-sheet contraction, 10% goes to dev treasury, and 20% is instantly awarded to ANY caller who triggers the harvest smart contract.",
+  "name": "pQT Protocol",
+  "symbol": "pQT",
+  "description": "The first cryptocurrency integrating Central Bank Quantitative Tightening (QT) logic with fully immutable tokenomics. All administrative privileges (Mint, Freeze, and Fee Config authorities) are permanently revoked. Tax collection is governed by a public smart contract: 80% of transfer fees (0.05%) are burned for balance-sheet contraction, 5% goes to dev treasury, and 15% is instantly awarded to ANY caller who triggers the harvest smart contract.",
   "image": "https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png",
   "external_url": "https://babai-men.github.io/pqt",
   "attributes": [
@@ -19,11 +19,24 @@
     },
     {
       "trait_type": "Caller Reward",
-      "value": "20% Instant Bounty"
+      "value": "15% Instant Bounty"
     },
     {
       "trait_type": "Fee Distribution",
-      "value": "70% Burn / 20% Bounty / 10% Dev"
+      "value": "80% Burn / 15% Bounty / 5% Dev"
     }
-  ]
+  ],
+  "extensions": {
+    "website": "https://babai-men.github.io/pqt",
+    "twitter": "https://x.com/pQTprotocol"
+  },
+  "properties": {
+    "files": [
+      {
+        "uri": "https://raw.githubusercontent.com/babai-men/pqt/main/pqt-logo.png",
+        "type": "image/png"
+      }
+    ],
+    "category": "image"
+  }
 }
