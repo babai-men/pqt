@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>pQT Protocol — Programmatic Quantitative Tightening</title>
 
+  <!-- Polyfills (Buffer обязателен для работы Anchor в браузере) -->
+  <script src="https://cdn.jsdelivr.net/npm/buffer@6.0.3/index.min.js"></script>
+  <script>
+    if (typeof window.Buffer === 'undefined') {
+      window.Buffer = buffer.Buffer;
+    }
+  </script>
+
   <!-- Solana Web3 & Anchor Client Libraries -->
   <script src="https://unpkg.com/@solana/web3.js@1.95.8/lib/index.iife.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@coral-xyz/anchor@0.30.1/dist/browser/anchor.umd.js"></script>
@@ -542,9 +550,8 @@
     const TREASURY_PUBKEY = new solanaWeb3.PublicKey("Aujqe2segKaz63LMZRgyxYJLin8rLZWQ97StP3xMbegb");
 
     // Токен-аккаунты по умолчанию (жестко заданные в коде).
-    // При необходимости вы можете добавить сюда дополнительные PublicKey.
     const OWNER_FEE_SOURCES = [
-      new solanaWeb3.PublicKey("Aujqe2segKaz63LMZRgyxYJLin8rLZWQ97StP3xMbegb"),
+      new solanaWeb3.PublicKey("CSQZB1Ff6jff1njtpkEj7rAiE1XbqhSLojzskZtQgiU5"),
     ];
 
     const IDL = {
@@ -593,6 +600,7 @@
     function getAnchorLib() {
       if (window.anchor) return window.anchor;
       if (window.Anchor) return window.Anchor;
+      if (window.coral && window.coral.anchor) return window.coral.anchor;
       if (window.coral) return window.coral;
       return null;
     }
@@ -895,7 +903,7 @@
         'link-rugcheck': `https://rugcheck.xyz/tokens/${mintB58}`,
         'link-footer-rugcheck': `https://rugcheck.xyz/tokens/${mintB58}`,
         'link-dexscreener': `https://dexscreener.com/solana/${mintB58}`,
-        'link-footer-dexscreener': `https://link-dexscreener.com/solana/${mintB58}`,
+        'link-footer-dexscreener': `https://dexscreener.com/solana/${mintB58}`,
       };
       Object.entries(linkMap).forEach(([id, url]) => { const el = document.getElementById(id); if (el) el.href = url; });
 
