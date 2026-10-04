@@ -168,17 +168,9 @@
 
     .console-actions { display: flex; flex-direction: column; gap: 16px; }
 
-    .action-btn {
-      background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px;
-      padding: 16px; text-align: left; cursor: pointer; transition: all 0.2s ease; color: var(--text-main);
-    }
-    .action-btn:hover:not(:disabled) { background: var(--bg-card-hover); border-color: var(--color-cyan); transform: translateX(4px); }
-    .action-title { font-weight: 700; font-size: 15px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
-    .action-desc { font-size: 12px; color: var(--text-muted); }
-
     .terminal-box {
       background: #0b0c10; border: 1px solid #262a35; border-radius: 12px; padding: 16px;
-      font-family: monospace; font-size: 12px; color: var(--color-mint); height: 280px;
+      font-family: monospace; font-size: 12px; color: var(--color-mint); height: 380px;
       overflow-y: auto; display: flex; flex-direction: column;
     }
     .terminal-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #111; }
@@ -373,52 +365,33 @@
 
       <div class="console-grid">
         <div class="console-actions">
-          <button class="action-btn" id="btn-harvest" onclick="executeHarvestAndDistribute()" disabled style="opacity: 0.5;">
-            <div class="action-title">
-              <span>🔥 Execute Harvest &amp; Distribute</span>
-              <span style="font-size: 11px; color: var(--color-mint); background: rgba(52, 217, 160,0.1); padding: 2px 6px; border-radius: 4px;">Public Call</span>
+          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span style="font-size: 16px; font-weight: 800; color: var(--color-mint);">⚡ Быстрый сбор (Quick Harvest)</span>
+              <span style="font-size: 11px; color: var(--color-cyan); background: rgba(43, 191, 171, 0.1); padding: 2px 8px; border-radius: 4px;">Preset + Custom</span>
             </div>
-            <div class="action-desc">
-              Calls <code class="code-inline">harvest_and_distribute</code>: collects fees, burns 80%, sends 15% bounty to you, and 5% to treasury.
-            </div>
-          </button>
+            <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+              Запускает <code class="code-inline">harvest_and_distribute</code> для указанных аккаунтов: собирает налог, сжигает 80%, отправляет вам 15% награды и 5% в казначейство.
+            </p>
 
-          <button class="action-btn" onclick="queryWithheldAccounts()">
-            <div class="action-title">
-              <span>🔍 Scan Fee Source Accounts</span>
-            </div>
-            <div class="action-desc">Queries the RPC cluster for all Token-2022 accounts of the $pQT mint and reads accumulated withheld fees.</div>
-          </button>
-
-          <button class="action-btn" id="btn-quick-harvest-toggle" onclick="toggleQuickHarvestPanel()">
-            <div class="action-title">
-              <span>⚡ Quick Harvest</span>
-              <span style="font-size: 11px; color: var(--color-cyan); background: rgba(43, 191, 171, 0.1); padding: 2px 6px; border-radius: 4px;">Custom List</span>
-            </div>
-            <div class="action-desc">Skip the full scan — harvest a specific set of token accounts. Add your own accounts to the curated list below.</div>
-          </button>
-
-          <div id="quick-harvest-panel" style="display: none; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; flex-direction: column; gap: 12px;">
             <div>
-              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Curated accounts (maintained by the project)</div>
-              <div id="owner-fee-sources-list" style="font-family: monospace; font-size: 12px; color: var(--color-mint); background: var(--bg-console); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; max-height: 100px; overflow-y: auto; white-space: pre-wrap; word-break: break-all;"></div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px; font-weight: 600;">
+                Аккаунты по умолчанию (указаны в коде):
+              </div>
+              <div id="owner-fee-sources-list" style="font-family: monospace; font-size: 12px; color: var(--color-mint); background: var(--bg-console); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; max-height: 90px; overflow-y: auto; white-space: pre-wrap; word-break: break-all;"></div>
             </div>
+
             <div>
-              <label for="user-fee-sources-input" style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 6px;">
-                Add your own token accounts (one per line, or comma-separated)
+              <label for="user-fee-sources-input" style="font-size: 12px; color: var(--text-muted); font-weight: 600; display: block; margin-bottom: 6px;">
+                Добавить токен-аккаунт к списку (по одному на строку или через запятую):
               </label>
-              <textarea id="user-fee-sources-input" rows="3" placeholder="e.g. CSQZB1Ff6jff1njtpkEj7rAiE1XbqhSLojzskZtQgiU5" style="width: 100%; font-family: monospace; font-size: 12px; background: var(--bg-console); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; resize: vertical;" oninput="handleQuickHarvestInput()"></textarea>
-              <div id="quick-harvest-validation" style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Enter valid Solana addresses to enable Quick Harvest.</div>
+              <textarea id="user-fee-sources-input" rows="3" placeholder="Например: CSQZB1Ff6jff1njtpkEj7rAiE1XbqhSLojzskZtQgiU5" style="width: 100%; font-family: monospace; font-size: 12px; background: var(--bg-console); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; resize: vertical;" oninput="handleQuickHarvestInput()"></textarea>
+              <div id="quick-harvest-validation" style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Введите валидный адрес Solana.</div>
             </div>
-            <button class="action-btn" id="btn-run-quick-harvest" onclick="executeQuickHarvest()" disabled style="opacity: 0.5;">
-              <div class="action-title"><span>🚀 Run Quick Harvest</span></div>
-              <div class="action-desc">Calls <code class="code-inline">harvest_and_distribute</code> using the curated list above plus any accounts you added.</div>
-            </button>
-          </div>
 
-          <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px;">
-            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Status Summary</div>
-            <div id="stat-found-accounts" style="font-size: 14px; font-weight: 700; color: var(--color-cyan);">Accounts with Fees: not scanned yet</div>
+            <button class="btn-primary" id="btn-run-quick-harvest" onclick="executeQuickHarvest()" disabled style="opacity: 0.5; padding: 14px; font-size: 15px; width: 100%; font-weight: 800; margin-top: 4px;">
+              🚀 Выполнить быстрый сбор
+            </button>
           </div>
         </div>
 
@@ -554,9 +527,7 @@
   <!-- Web3 Integration Script -->
   <script>
     // ======================= Network Configuration =======================
-    // Single source of truth for the target cluster.
-    // Set to "devnet" if the program is deployed on devnet.
-    const NETWORK = "devnet"; // "mainnet-beta" | "devnet" — the program and mint currently exist on devnet only
+    const NETWORK = "devnet"; // "mainnet-beta" | "devnet"
     const RPC_URL = NETWORK === "devnet"
       ? "https://api.devnet.solana.com"
       : "https://api.mainnet-beta.solana.com";
@@ -570,13 +541,10 @@
     const VAULT_AUTHORITY = new solanaWeb3.PublicKey("5NyvMUifoWkQenJQb7JKvYWj3aJFdnMWAewhT47hyiLk");
     const TREASURY_PUBKEY = new solanaWeb3.PublicKey("Aujqe2segKaz63LMZRgyxYJLin8rLZWQ97StP3xMbegb");
 
-    // Project-curated token accounts. Used (a) as a fallback for the regular
-    // Harvest button until a real on-chain scan has been performed, and
-    // (b) as the base list for Quick Harvest — edit this array to add or
-    // remove addresses you want harvested by default.
+    // Токен-аккаунты по умолчанию (жестко заданные в коде).
+    // При необходимости вы можете добавить сюда дополнительные PublicKey.
     const OWNER_FEE_SOURCES = [
-      new solanaWeb3.PublicKey("CSQZB1Ff6jff1njtpkEj7rAiE1XbqhSLojzskZtQgiU5"),
-      // new solanaWeb3.PublicKey("..."),
+      new solanaWeb3.PublicKey("Aujqe2segKaz63LMZRgyxYJLin8rLZWQ97StP3xMbegb"),
     ];
 
     const IDL = {
@@ -610,12 +578,6 @@
     let program = null;
     let walletPublicKey = null;
     let walletAdapter = null;
-    let tokenDecimals = 9;            // updated from on-chain mint info
-    let scannedFeeSources = [];       // populated by queryWithheldAccounts()
-
-    // Extension type 2 = TransferFeeAmount (account extension holding withheld fees)
-    const EXT_TRANSFER_FEE_AMOUNT = 2;
-    const TOKEN_ACCOUNT_BASE_SIZE = 165; // bytes before TLV extension block
 
     // ======================= Terminal Helper =======================
     function logToTerminal(message, typeClass = 'log-info') {
@@ -651,21 +613,21 @@
       try {
         const adapter = window.solana || window.solflare;
         if (!adapter) {
-          logToTerminal('[ERROR] No Solana wallet extension found! Please install Phantom or Solflare.', 'log-warn');
+          logToTerminal('[ERROR] Кошелек Solana не найден! Установите Phantom или Solflare.', 'log-warn');
           return;
         }
         if (typeof adapter.signTransaction !== 'function') {
-          logToTerminal('[ERROR] Wallet does not expose signTransaction and cannot be used with Anchor.', 'log-warn');
+          logToTerminal('[ERROR] Кошелек не поддерживает функцию signTransaction.', 'log-warn');
           return;
         }
 
         const anchorLib = getAnchorLib();
         if (!anchorLib) {
-          logToTerminal('[ERROR] Anchor library is not loaded properly from CDN.', 'log-warn');
+          logToTerminal('[ERROR] Библиотека Anchor не загружена.', 'log-warn');
           return;
         }
 
-        logToTerminal('[WALLET] Requesting wallet connection...', 'log-info');
+        logToTerminal('[WALLET] Подключение к кошельку...', 'log-info');
         const response = await adapter.connect();
         walletAdapter = adapter;
         walletPublicKey = response.publicKey;
@@ -673,7 +635,6 @@
         provider = new anchorLib.AnchorProvider(connection, adapter, { commitment: "confirmed" });
         program = new anchorLib.Program(IDL, provider);
 
-        await ensureTokenDecimals();
         attachWalletEvents();
 
         const short = shortAddr(walletPublicKey);
@@ -682,17 +643,14 @@
         document.getElementById('btn-connect-wallet').innerText = 'Disconnect';
         document.getElementById('btn-connect-header').innerText = 'Disconnect';
 
-        const harvestBtn = document.getElementById('btn-harvest');
-        harvestBtn.disabled = false;
-        harvestBtn.style.opacity = "1";
-        handleQuickHarvestInput(); // re-evaluate Quick Harvest button now that a wallet is connected
+        handleQuickHarvestInput();
 
-        logToTerminal(`[WALLET] Successfully connected: ${walletPublicKey.toBase58()}`, 'log-success');
+        logToTerminal(`[WALLET] Успешно подключен: ${walletPublicKey.toBase58()}`, 'log-success');
       } catch (err) {
         if (isUserRejection(err)) {
-          logToTerminal('[WALLET] Connection rejected by user.', 'log-warn');
+          logToTerminal('[WALLET] Подключение отклонено пользователем.', 'log-warn');
         } else {
-          logToTerminal(`[ERROR] Connection failed: ${err.message}`, 'log-warn');
+          logToTerminal(`[ERROR] Ошибка подключения: ${err.message}`, 'log-warn');
         }
       }
     }
@@ -708,17 +666,13 @@
       document.getElementById('btn-connect-wallet').innerText = 'Connect Wallet';
       document.getElementById('btn-connect-header').innerText = 'Connect Wallet';
 
-      const harvestBtn = document.getElementById('btn-harvest');
-      harvestBtn.disabled = true;
-      harvestBtn.style.opacity = "0.5";
-
       const quickHarvestBtn = document.getElementById('btn-run-quick-harvest');
       if (quickHarvestBtn) {
         quickHarvestBtn.disabled = true;
         quickHarvestBtn.style.opacity = "0.5";
       }
 
-      logToTerminal('[WALLET] Wallet disconnected.', 'log-info');
+      logToTerminal('[WALLET] Кошелек отключен.', 'log-info');
     }
 
     async function disconnectWallet() {
@@ -727,7 +681,7 @@
           await walletAdapter.disconnect();
         }
       } catch (err) {
-        logToTerminal(`[WARN] Wallet adapter disconnect error: ${err.message}`, 'log-warn');
+        logToTerminal(`[WARN] Ошибка отключения кошелька: ${err.message}`, 'log-warn');
       }
       handleDisconnect();
     }
@@ -748,234 +702,20 @@
           walletPublicKey = newPublicKey;
           const short = shortAddr(walletPublicKey);
           document.getElementById('wallet-status-badge').innerText = `Connected: ${short}`;
-          logToTerminal(`[WALLET] Account changed: ${walletPublicKey.toBase58()}`, 'log-info');
+          logToTerminal(`[WALLET] Смена аккаунта: ${walletPublicKey.toBase58()}`, 'log-info');
         } else {
           handleDisconnect();
         }
       });
     }
 
-    async function ensureTokenDecimals() {
-      try {
-        const mintInfo = await splToken.getMint(connection, MINT, "confirmed", splToken.TOKEN_2022_PROGRAM_ID);
-        tokenDecimals = mintInfo.decimals;
-        logToTerminal(`[MINT] Decimals loaded: ${tokenDecimals}`, 'log-info');
-      } catch (err) {
-        logToTerminal(`[WARN] Could not load mint decimals (${err.message}); using 9.`, 'log-warn');
-      }
-    }
-
-    // ======================= Token-2022 Fee Scanning =======================
-    // Parses the TLV extension block of a Token-2022 account and returns the
-    // withheld transfer fee (u64 as BigInt), or 0n if the extension is absent.
-    function parseWithheldAmount(accountData) {
-      try {
-        if (accountData.length <= TOKEN_ACCOUNT_BASE_SIZE) return 0n;
-        let offset = TOKEN_ACCOUNT_BASE_SIZE;
-        while (offset + 4 <= accountData.length) {
-          const extType = accountData.readUInt16LE(offset);
-          const extLen = accountData.readUInt16LE(offset + 2);
-          if (extType === 0) break; // Uninitialized / padding
-          if (extType === EXT_TRANSFER_FEE_AMOUNT && extLen >= 8) {
-            return accountData.readBigUInt64LE(offset + 4);
-          }
-          offset += 4 + extLen;
-        }
-      } catch (e) { /* malformed data — treat as zero */ }
-      return 0n;
-    }
-
-    async function queryWithheldAccounts() {
-      logToTerminal(`[SCAN] Querying ${NETWORK} for all Token-2022 accounts of mint ${MINT.toBase58()}...`, 'log-info');
-      const statEl = document.getElementById('stat-found-accounts');
-      statEl.innerText = 'Accounts with Fees: scanning...';
-      statEl.style.color = 'var(--color-amber)';
-
-      try {
-        const accountsResp = await connection.getProgramAccounts(splToken.TOKEN_2022_PROGRAM_ID, {
-          commitment: "confirmed",
-          filters: [
-            { memcmp: { offset: 0, bytes: MINT.toBase58() } }, // token account field #0 = mint
-          ],
-        });
-
-        logToTerminal(`[SCAN] ${accountsResp.length} token account(s) found for the $pQT mint.`, 'log-info');
-
-        let totalWithheld = 0n;
-        const sources = [];
-        for (const { pubkey, account } of accountsResp) {
-          const withheld = parseWithheldAmount(account.data);
-          if (withheld > 0n) {
-            totalWithheld += withheld;
-            sources.push(pubkey);
-            logToTerminal(`[SCAN] ${shortAddr(pubkey)} — withheld: ${formatTokenAmount(withheld)} pQT`, 'log-info');
-          }
-        }
-
-        scannedFeeSources = sources;
-
-        if (sources.length === 0) {
-          statEl.innerText = 'Accounts with Fees: 0 (no fees accumulated yet)';
-          statEl.style.color = 'var(--color-amber)';
-          logToTerminal('[SCAN] No withheld fees found. Harvesting is not yet profitable.', 'log-warn');
-        } else {
-          statEl.innerText = `Accounts with Fees: ${sources.length} (${formatTokenAmount(totalWithheld)} pQT)`;
-          statEl.style.color = 'var(--color-mint)';
-          logToTerminal(`[SCAN] Done: ${sources.length} account(s) hold ${formatTokenAmount(totalWithheld)} pQT in withheld fees.`, 'log-success');
-        }
-      } catch (err) {
-        statEl.innerText = 'Accounts with Fees: scan failed';
-        statEl.style.color = 'var(--color-red)';
-        logToTerminal(`[ERROR] Scan failed: ${err.message}`, 'log-warn');
-        if (/too large|410|limit/i.test(err.message)) {
-          logToTerminal('[HINT] Public RPC rejected the query. Use a dedicated RPC endpoint (Helius/QuickNode) for full-mint scans.', 'log-info');
-        }
-      }
-    }
-
-    function formatTokenAmount(rawBigInt) {
-      const value = Number(rawBigInt) / (10 ** tokenDecimals);
-      return value.toLocaleString('en-US', { maximumFractionDigits: tokenDecimals });
-    }
-
-    function getActiveFeeSources() {
-      return scannedFeeSources.length > 0 ? scannedFeeSources : OWNER_FEE_SOURCES;
-    }
-
-    // ======================= Harvest & Distribute =======================
-    // sourceAccounts is optional — defaults to getActiveFeeSources() (the
-    // regular Harvest button flow). Quick Harvest passes its own combined
-    // (curated + user-added) list explicitly.
-    function buildHarvestBuilder(preInstructions, sourceAccounts) {
-      const callerTokenAccount = splToken.getAssociatedTokenAddressSync(
-        MINT, walletPublicKey, false, splToken.TOKEN_2022_PROGRAM_ID
-      );
-      const treasuryTokenAccount = splToken.getAssociatedTokenAddressSync(
-        MINT, TREASURY_PUBKEY, false, splToken.TOKEN_2022_PROGRAM_ID
-      );
-      const vault = splToken.getAssociatedTokenAddressSync(
-        MINT, VAULT_AUTHORITY, true, splToken.TOKEN_2022_PROGRAM_ID
-      );
-
-      const remainingAccounts = (sourceAccounts || getActiveFeeSources()).map((pubkey) => ({
-        pubkey,
-        isWritable: true,
-        isSigner: false,
-      }));
-
-      return program.methods
-        .harvestAndDistribute()
-        .accounts({
-          caller: walletPublicKey,
-          mint: MINT,
-          vault: vault,
-          vaultAuthority: VAULT_AUTHORITY,
-          callerTokenAccount: callerTokenAccount,
-          treasuryTokenAccount: treasuryTokenAccount,
-          tokenProgram: splToken.TOKEN_2022_PROGRAM_ID,
-        })
-        .remainingAccounts(remainingAccounts)
-        .preInstructions(preInstructions || []);
-    }
-
-    // Creates an ATA initialization instruction if the account does not exist yet.
-    async function maybeCreateAtaInstruction(ataAddress, ownerPublicKey, payerPublicKey, label) {
-      const info = await connection.getAccountInfo(ataAddress);
-      if (info) return null;
-      logToTerminal(`[ATA] ${label} (${shortAddr(ataAddress)}) does not exist — it will be created in this transaction.`, 'log-warn');
-      return splToken.createAssociatedTokenAccountInstruction(
-        payerPublicKey, ataAddress, ownerPublicKey, MINT, splToken.TOKEN_2022_PROGRAM_ID
-      );
-    }
-
-    async function executeHarvestAndDistribute() {
-      if (!walletPublicKey || !program) {
-        logToTerminal('[ERROR] Wallet is not connected!', 'log-warn');
-        return;
-      }
-
-      const sourceAccounts = getActiveFeeSources();
-      if (sourceAccounts.length === 0) {
-        logToTerminal('[ERROR] No fee source accounts available. Run a scan first.', 'log-warn');
-        return;
-      }
-
-      try {
-        logToTerminal('[TX] Preparing associated token accounts...', 'log-info');
-
-        const callerTokenAccount = splToken.getAssociatedTokenAddressSync(
-          MINT, walletPublicKey, false, splToken.TOKEN_2022_PROGRAM_ID
-        );
-        const treasuryTokenAccount = splToken.getAssociatedTokenAddressSync(
-          MINT, TREASURY_PUBKEY, false, splToken.TOKEN_2022_PROGRAM_ID
-        );
-
-        const preInstructions = [];
-
-        const callerAtaIx = await maybeCreateAtaInstruction(
-          callerTokenAccount, walletPublicKey, walletPublicKey, 'Caller token account'
-        );
-        if (callerAtaIx) preInstructions.push(callerAtaIx);
-
-        const treasuryAtaIx = await maybeCreateAtaInstruction(
-          treasuryTokenAccount, TREASURY_PUBKEY, walletPublicKey, 'Treasury token account'
-        );
-        if (treasuryAtaIx) {
-          preInstructions.push(treasuryAtaIx);
-          logToTerminal('[TX] Note: you are paying the one-time rent for the treasury ATA.', 'log-warn');
-        }
-
-        // Simulate first — never burn transaction fees on a call that would fail.
-        logToTerminal(`[TX] Simulating harvest across ${sourceAccounts.length} source account(s)...`, 'log-info');
-        const simulation = await buildHarvestBuilder(preInstructions).simulate();
-
-        if (simulation.value.err) {
-          logToTerminal(`[ERROR] Simulation failed: ${JSON.stringify(simulation.value.err)}`, 'log-warn');
-          const logs = (simulation.value.logs || []).slice(-5);
-          logs.forEach((line) => logToTerminal(`  ${line}`, 'log-info'));
-          logToTerminal('[HINT] No accumulated fees yet, or treasury/vault setup mismatch.', 'log-info');
-          return;
-        }
-        logToTerminal('[TX] Simulation successful. Sending transaction...', 'log-info');
-
-        const txSig = await buildHarvestBuilder(preInstructions).rpc();
-
-        logToTerminal(`[SUCCESS] Transaction confirmed! Hash: ${txSig}`, 'log-success');
-        logToTerminal(`[EXPLORER] https://explorer.solana.com/tx/${txSig}${CLUSTER_QUERY}`, 'log-info');
-
-        // Refresh the fee scan so the UI reflects post-harvest state.
-        queryWithheldAccounts();
-      } catch (err) {
-        if (isUserRejection(err)) {
-          logToTerminal('[TX] Transaction rejected by user.', 'log-warn');
-        } else {
-          console.error(err);
-          logToTerminal(`[ERROR] Harvest failed: ${err.message}`, 'log-warn');
-        }
-      }
-    }
-
-    // ======================= Quick Harvest =======================
-    // Lets any visitor combine the project's curated OWNER_FEE_SOURCES with
-    // their own, freely-entered token accounts and run harvest_and_distribute
-    // against that exact combined list, without waiting for a full mint scan.
-
+    // ======================= Quick Harvest Helpers =======================
     function renderOwnerFeeSourcesList() {
       const el = document.getElementById('owner-fee-sources-list');
       if (!el) return;
       el.textContent = OWNER_FEE_SOURCES.map((pk) => pk.toBase58()).join('\n');
     }
 
-    function toggleQuickHarvestPanel() {
-      const panel = document.getElementById('quick-harvest-panel');
-      if (!panel) return;
-      const isOpen = panel.style.display === 'flex';
-      panel.style.display = isOpen ? 'none' : 'flex';
-    }
-
-    // Parses freeform textarea input (newline- or comma-separated) into valid
-    // PublicKeys, de-duplicated and de-duplicated against OWNER_FEE_SOURCES.
-    // Returns { combined, addedCount, invalid } — never throws.
     function parseQuickHarvestInput() {
       const raw = (document.getElementById('user-fee-sources-input')?.value || '');
       const tokens = raw.split(/[\s,]+/).map((t) => t.trim()).filter(Boolean);
@@ -989,9 +729,7 @@
         try {
           pk = new solanaWeb3.PublicKey(token);
           if (!solanaWeb3.PublicKey.isOnCurve(pk.toBytes())) {
-            // Token accounts are regular (on-curve) addresses, not PDAs —
-            // this guards against pasting a PDA or program address by mistake.
-            throw new Error('not a standard address');
+            throw new Error('not on curve');
           }
         } catch {
           invalid.push(token);
@@ -1015,13 +753,13 @@
 
       if (invalid.length > 0) {
         msg.style.color = 'var(--color-red)';
-        msg.textContent = `Invalid address(es): ${invalid.map(shortAddrString).join(', ')}`;
+        msg.textContent = `Неверный адрес: ${invalid.map(shortAddrString).join(', ')}`;
       } else if (addedCount > 0) {
         msg.style.color = 'var(--color-mint)';
-        msg.textContent = `${addedCount} account(s) added to the curated list.`;
+        msg.textContent = `Добавлено аккаунтов к основному списку: ${addedCount}`;
       } else {
         msg.style.color = 'var(--text-dim)';
-        msg.textContent = 'Enter valid Solana addresses to enable Quick Harvest.';
+        msg.textContent = 'Введите валидный адрес Solana для добавления.';
       }
 
       const canRun = walletPublicKey && invalid.length === 0;
@@ -1033,26 +771,68 @@
       return s.length > 12 ? `${s.slice(0, 4)}…${s.slice(-4)}` : s;
     }
 
+    async function maybeCreateAtaInstruction(ataAddress, ownerPublicKey, payerPublicKey, label) {
+      const info = await connection.getAccountInfo(ataAddress);
+      if (info) return null;
+      logToTerminal(`[ATA] ${label} (${shortAddr(ataAddress)}) не создан — инструкция создания добавлена в транзакцию.`, 'log-warn');
+      return splToken.createAssociatedTokenAccountInstruction(
+        payerPublicKey, ataAddress, ownerPublicKey, MINT, splToken.TOKEN_2022_PROGRAM_ID
+      );
+    }
+
+    function buildHarvestBuilder(preInstructions, sourceAccounts) {
+      const callerTokenAccount = splToken.getAssociatedTokenAddressSync(
+        MINT, walletPublicKey, false, splToken.TOKEN_2022_PROGRAM_ID
+      );
+      const treasuryTokenAccount = splToken.getAssociatedTokenAddressSync(
+        MINT, TREASURY_PUBKEY, false, splToken.TOKEN_2022_PROGRAM_ID
+      );
+      const vault = splToken.getAssociatedTokenAddressSync(
+        MINT, VAULT_AUTHORITY, true, splToken.TOKEN_2022_PROGRAM_ID
+      );
+
+      const remainingAccounts = sourceAccounts.map((pubkey) => ({
+        pubkey,
+        isWritable: true,
+        isSigner: false,
+      }));
+
+      return program.methods
+        .harvestAndDistribute()
+        .accounts({
+          caller: walletPublicKey,
+          mint: MINT,
+          vault: vault,
+          vaultAuthority: VAULT_AUTHORITY,
+          callerTokenAccount: callerTokenAccount,
+          treasuryTokenAccount: treasuryTokenAccount,
+          tokenProgram: splToken.TOKEN_2022_PROGRAM_ID,
+        })
+        .remainingAccounts(remainingAccounts)
+        .preInstructions(preInstructions || []);
+    }
+
+    // ======================= Execute Quick Harvest =======================
     async function executeQuickHarvest() {
       if (!walletPublicKey || !program) {
-        logToTerminal('[ERROR] Wallet is not connected!', 'log-warn');
+        logToTerminal('[ERROR] Кошелек не подключен!', 'log-warn');
         return;
       }
 
       const { combined, addedCount, invalid } = parseQuickHarvestInput();
       if (invalid.length > 0) {
-        logToTerminal(`[ERROR] Fix invalid address(es) before running: ${invalid.join(', ')}`, 'log-warn');
+        logToTerminal(`[ERROR] Исправьте неверные адреса перед запуском: ${invalid.join(', ')}`, 'log-warn');
         return;
       }
       if (combined.length === 0) {
-        logToTerminal('[ERROR] No fee source accounts in the combined list.', 'log-warn');
+        logToTerminal('[ERROR] Нет токен-аккаунтов для сбора.', 'log-warn');
         return;
       }
 
-      logToTerminal(`[QUICK] Running harvest over ${combined.length} account(s) — ${OWNER_FEE_SOURCES.length} curated + ${addedCount} user-added.`, 'log-info');
+      logToTerminal(`[HARVEST] Запуск сбора по ${combined.length} аккаунтам (${OWNER_FEE_SOURCES.length} в коде + ${addedCount} пользовательских)...`, 'log-info');
 
       try {
-        logToTerminal('[TX] Preparing associated token accounts...', 'log-info');
+        logToTerminal('[TX] Подготовка ассоциированных токен-аккаунтов (ATA)...', 'log-info');
 
         const callerTokenAccount = splToken.getAssociatedTokenAddressSync(
           MINT, walletPublicKey, false, splToken.TOKEN_2022_PROGRAM_ID
@@ -1064,40 +844,37 @@
         const preInstructions = [];
 
         const callerAtaIx = await maybeCreateAtaInstruction(
-          callerTokenAccount, walletPublicKey, walletPublicKey, 'Caller token account'
+          callerTokenAccount, walletPublicKey, walletPublicKey, 'Ваш токен-аккаунт'
         );
         if (callerAtaIx) preInstructions.push(callerAtaIx);
 
         const treasuryAtaIx = await maybeCreateAtaInstruction(
-          treasuryTokenAccount, TREASURY_PUBKEY, walletPublicKey, 'Treasury token account'
+          treasuryTokenAccount, TREASURY_PUBKEY, walletPublicKey, 'Токен-аккаунт Казначейства'
         );
-        if (treasuryAtaIx) {
-          preInstructions.push(treasuryAtaIx);
-          logToTerminal('[TX] Note: you are paying the one-time rent for the treasury ATA.', 'log-warn');
-        }
+        if (treasuryAtaIx) preInstructions.push(treasuryAtaIx);
 
-        logToTerminal(`[TX] Simulating quick harvest across ${combined.length} source account(s)...`, 'log-info');
+        logToTerminal(`[TX] Эмуляция транзакции...`, 'log-info');
         const simulation = await buildHarvestBuilder(preInstructions, combined).simulate();
 
         if (simulation.value.err) {
-          logToTerminal(`[ERROR] Simulation failed: ${JSON.stringify(simulation.value.err)}`, 'log-warn');
+          logToTerminal(`[ERROR] Ошибка симуляции: ${JSON.stringify(simulation.value.err)}`, 'log-warn');
           const logs = (simulation.value.logs || []).slice(-5);
           logs.forEach((line) => logToTerminal(`  ${line}`, 'log-info'));
-          logToTerminal('[HINT] No accumulated fees on these accounts yet, or an invalid address was included.', 'log-info');
+          logToTerminal('[HINT] На указанных аккаунтах нет накопленных комиссий либо указан неверный адрес.', 'log-info');
           return;
         }
-        logToTerminal('[TX] Simulation successful. Sending transaction...', 'log-info');
+        logToTerminal('[TX] Симуляция успешна. Отправка транзакции...', 'log-info');
 
         const txSig = await buildHarvestBuilder(preInstructions, combined).rpc();
 
-        logToTerminal(`[SUCCESS] Transaction confirmed! Hash: ${txSig}`, 'log-success');
+        logToTerminal(`[SUCCESS] Транзакция подтверждена! Хэш: ${txSig}`, 'log-success');
         logToTerminal(`[EXPLORER] https://explorer.solana.com/tx/${txSig}${CLUSTER_QUERY}`, 'log-info');
       } catch (err) {
         if (isUserRejection(err)) {
-          logToTerminal('[TX] Transaction rejected by user.', 'log-warn');
+          logToTerminal('[TX] Транзакция отклонена пользователем.', 'log-warn');
         } else {
           console.error(err);
-          logToTerminal(`[ERROR] Quick Harvest failed: ${err.message}`, 'log-warn');
+          logToTerminal(`[ERROR] Ошибка выполнения: ${err.message}`, 'log-warn');
         }
       }
     }
@@ -1108,7 +885,6 @@
 
       const mintB58 = MINT.toBase58();
 
-      // Point all buy/audit links at the actual mint address.
       const jupUrl = `https://jup.ag/swap/SOL-${mintB58}`;
       ['btn-buy-header', 'btn-buy-hero', 'btn-buy-highlight', 'link-jupiter', 'link-footer-jupiter']
         .forEach((id) => { const el = document.getElementById(id); if (el) el.href = jupUrl; });
@@ -1119,20 +895,16 @@
         'link-rugcheck': `https://rugcheck.xyz/tokens/${mintB58}`,
         'link-footer-rugcheck': `https://rugcheck.xyz/tokens/${mintB58}`,
         'link-dexscreener': `https://dexscreener.com/solana/${mintB58}`,
-        'link-footer-dexscreener': `https://dexscreener.com/solana/${mintB58}`,
+        'link-footer-dexscreener': `https://link-dexscreener.com/solana/${mintB58}`,
       };
       Object.entries(linkMap).forEach(([id, url]) => { const el = document.getElementById(id); if (el) el.href = url; });
 
-      // Network badge + terminal banner.
       const badge = document.getElementById('network-badge');
       badge.innerText = `Network: ${NETWORK}`;
       badge.style.color = NETWORK === 'devnet' ? 'var(--color-amber)' : 'var(--color-mint)';
 
-      logToTerminal('[SYSTEM] Web3 console initialized. Connected to Solana ' + NETWORK + ' RPC.', 'log-info');
-      logToTerminal('[WALLET] Please connect your Solana wallet to enable interactive instructions.', 'log-warn');
-      if (NETWORK === 'devnet') {
-        logToTerminal('[WARN] Console is pointed at DEVNET while buy links target mainnet. Check the NETWORK constant.', 'log-warn');
-      }
+      logToTerminal('[SYSTEM] Консоль инициализирована. Подключение к ' + NETWORK + '.', 'log-info');
+      logToTerminal('[WALLET] Подключите кошелек Solana для выполнения операций.', 'log-warn');
     })();
   </script>
 </body>
