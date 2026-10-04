@@ -15,26 +15,26 @@
        pQT Protocol — Web3 Neon Theme (Purple / Cyan / Mint)
        ========================================================================== */
     :root {
-      --bg-dark: #14161c;
-      --bg-card: #1a1c24;
-      --bg-card-hover: #20232d;
-      --bg-console: #101319;
-      --border-color: #2a2e3a;
-      --border-hover: rgba(110, 198, 220, 0.28);
+      --bg-dark: #0f1512;
+      --bg-card: #161f1a;
+      --bg-card-hover: #1c2820;
+      --bg-console: #0c120f;
+      --border-color: #26332c;
+      --border-hover: rgba(52, 217, 160, 0.28);
 
-      --color-purple: #a78bfa;
-      --color-cyan: #6ec6dc;
-      --color-mint: #6fd9a8;
-      --color-amber: #dba463;
-      --color-red: #e07a86;
+      --color-purple: #4cb876;
+      --color-cyan: #2bbfab;
+      --color-mint: #34d9a0;
+      --color-amber: #dfb13e;
+      --color-red: #c97b63;
 
-      --grad-logo: linear-gradient(135deg, #a78bfa 0%, #6ec6dc 50%, #6fd9a8 100%);
-      --grad-text: linear-gradient(110deg, #b39ddb 0%, #6ec6dc 45%, #6fd9a8 100%);
-      --grad-glow: radial-gradient(circle at 50% 10%, rgba(110, 198, 220, 0.08) 0%, rgba(167, 139, 250, 0.04) 45%, transparent 75%);
+      --grad-logo: linear-gradient(135deg, #4cb876 0%, #2bbfab 50%, #34d9a0 100%);
+      --grad-text: linear-gradient(110deg, #4cb876 0%, #2bbfab 45%, #34d9a0 100%);
+      --grad-glow: radial-gradient(circle at 50% 10%, rgba(43, 191, 171, 0.08) 0%, rgba(76, 184, 118, 0.04) 45%, transparent 75%);
 
-      --text-main: #e9ebef;
-      --text-muted: #a6acb8;
-      --text-dim: #7b818d;
+      --text-main: #e7ece8;
+      --text-muted: #a3afa7;
+      --text-dim: #76827a;
 
       --max-width: 1200px;
     }
@@ -62,7 +62,7 @@
       display: flex; justify-content: space-between; align-items: center;
       max-width: var(--max-width); margin: 0 auto; padding: 20px;
       border-bottom: 1px solid var(--border-color);
-      position: sticky; top: 0; background: rgba(20, 22, 28, 0.85);
+      position: sticky; top: 0; background: rgba(15, 21, 18, 0.85);
       backdrop-filter: blur(12px); z-index: 100;
     }
 
@@ -71,7 +71,7 @@
     .logo-ring {
       width: 44px; height: 44px; border-radius: 50%; padding: 2px;
       background: var(--grad-logo); display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 0 10px rgba(110, 198, 220, 0.18);
+      box-shadow: 0 0 10px rgba(43, 191, 171, 0.18);
     }
     .logo-ring img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; background: var(--bg-dark); }
 
@@ -86,18 +86,18 @@
 
     /* Buttons */
     .btn-buy {
-      background: linear-gradient(135deg, #6fd9a8 0%, #6ec6dc 100%);
-      color: #14161c; font-weight: 800; font-size: 14px; border: none;
+      background: linear-gradient(135deg, #34d9a0 0%, #2bbfab 100%);
+      color: #0f1512; font-weight: 800; font-size: 14px; border: none;
       padding: 10px 20px; border-radius: 10px; cursor: pointer; text-decoration: none;
       display: inline-flex; align-items: center; gap: 6px; transition: all 0.25s ease;
-      box-shadow: 0 0 10px rgba(111, 217, 168, 0.2);
+      box-shadow: 0 0 10px rgba(52, 217, 160, 0.2);
     }
-    .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 0 16px rgba(110, 198, 220, 0.3); }
+    .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 0 16px rgba(43, 191, 171, 0.3); }
 
     .btn-primary {
-      background: var(--grad-logo); color: #14161c; font-weight: 700; font-size: 14px;
+      background: var(--grad-logo); color: #0f1512; font-weight: 700; font-size: 14px;
       border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;
-      transition: all 0.25s ease; box-shadow: 0 0 10px rgba(167, 139, 250, 0.2);
+      transition: all 0.25s ease; box-shadow: 0 0 10px rgba(76, 184, 118, 0.2);
     }
     .btn-primary:hover { opacity: 0.95; transform: translateY(-2px); }
 
@@ -113,7 +113,7 @@
 
     .badge {
       display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 20px;
-      background: rgba(167, 139, 250, 0.08); border: 1px solid rgba(167, 139, 250, 0.22);
+      background: rgba(76, 184, 118, 0.08); border: 1px solid rgba(76, 184, 118, 0.22);
       color: var(--color-cyan); font-size: 13px; font-weight: 600; margin-bottom: 24px;
     }
 
@@ -126,7 +126,7 @@
     .banner-section { margin: 10px 0 60px; display: flex; justify-content: center; }
     .banner-img {
       width: 100%; height: auto; max-width: 1200px; border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 14px rgba(167, 139, 250, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 14px rgba(76, 184, 118, 0.1);
       transition: transform 0.3s ease;
     }
     .banner-img:hover { transform: translateY(-2px); }
@@ -147,8 +147,8 @@
     .about-card-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
 
     .about-highlight-box {
-      background: linear-gradient(135deg, rgba(167, 139, 250, 0.08) 0%, rgba(110, 198, 220, 0.08) 100%);
-      border: 1px solid rgba(110, 198, 220, 0.18); border-radius: 16px; padding: 32px;
+      background: linear-gradient(135deg, rgba(76, 184, 118, 0.08) 0%, rgba(43, 191, 171, 0.08) 100%);
+      border: 1px solid rgba(43, 191, 171, 0.18); border-radius: 16px; padding: 32px;
       display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
     }
     .about-highlight-content { flex: 1; }
@@ -183,9 +183,9 @@
     }
     .terminal-bar { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #111; }
     .dot { width: 10px; height: 10px; border-radius: 50%; }
-    .dot-red { background: #e07a86; } .dot-yellow { background: #dba463; } .dot-green { background: #7ecb9e; }
+    .dot-red { background: #c97b63; } .dot-yellow { background: #dfb13e; } .dot-green { background: #5fc98a; }
     .log-line { margin-bottom: 6px; word-break: break-all; }
-    .log-info { color: #a6acb8; } .log-success { color: var(--color-mint); } .log-warn { color: var(--color-amber); }
+    .log-info { color: #a3afa7; } .log-success { color: var(--color-mint); } .log-warn { color: var(--color-amber); }
 
     /* Security */
     .security-section { margin-bottom: 80px; }
@@ -195,21 +195,21 @@
       text-decoration: none; color: var(--text-main); transition: all 0.3s ease;
       display: flex; flex-direction: column; justify-content: space-between;
     }
-    .security-card:hover { background: var(--bg-card-hover); border-color: var(--color-cyan); transform: translateY(-4px); box-shadow: 0 8px 18px rgba(110, 198, 220, 0.1); }
+    .security-card:hover { background: var(--bg-card-hover); border-color: var(--color-cyan); transform: translateY(-4px); box-shadow: 0 8px 18px rgba(43, 191, 171, 0.1); }
     .security-icon { font-size: 28px; margin-bottom: 12px; }
     .security-name { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
     .security-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
-    .security-badge { font-size: 11px; font-family: monospace; color: var(--color-mint); background: rgba(111, 217, 168, 0.08); padding: 4px 8px; border-radius: 6px; display: inline-block; width: fit-content; }
+    .security-badge { font-size: 11px; font-family: monospace; color: var(--color-mint); background: rgba(52, 217, 160, 0.08); padding: 4px 8px; border-radius: 6px; display: inline-block; width: fit-content; }
 
     /* Tokenomics */
     .tokenomics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 80px; }
     .card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px; transition: all 0.3s ease; }
-    .card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); box-shadow: 0 0 18px rgba(110, 198, 220, 0.08); transform: translateY(-3px); }
+    .card:hover { background: var(--bg-card-hover); border-color: var(--border-hover); box-shadow: 0 0 18px rgba(43, 191, 171, 0.08); transform: translateY(-3px); }
     .card-value { font-size: 44px; font-weight: 900; line-height: 1; margin-bottom: 12px; }
     .card-value.purple { color: var(--color-purple); } .card-value.cyan { color: var(--color-cyan); } .card-value.mint { color: var(--color-mint); }
     .card-title { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
     .card-desc { color: var(--text-muted); font-size: 14px; line-height: 1.6; }
-    .code-inline { font-family: monospace; color: var(--color-cyan); background: rgba(110, 198, 220, 0.08); padding: 2px 6px; border-radius: 4px; }
+    .code-inline { font-family: monospace; color: var(--color-cyan); background: rgba(43, 191, 171, 0.08); padding: 2px 6px; border-radius: 4px; }
 
     /* FAQ */
     .faq-section { margin-bottom: 80px; }
@@ -313,42 +313,42 @@
 
     <!-- About Project -->
     <section id="about-project" class="about-section">
-      <h2 class="section-title">About pQT Protocol</h2>
+      <h2 class="section-title">About the Project</h2>
       <p class="section-subtitle">
-        pQT (Programmatic Quantitative Tightening) introduces an autonomous, decentralized monetary policy designed to continuously shrink circulating supply through native smart contract extensions.
+        pQT Protocol is the first cryptocurrency that brings Central Bank Quantitative Tightening (QT) logic into fully immutable tokenomics on Solana, built on the Token-2022 standard. The protocol uses the built-in Transfer Fee extension and hands the right to withdraw withheld fees to a Program Derived Address (PDA) controlled entirely by the smart contract &mdash; full technical details are in the project's <a href="https://github.com/babai-men/pqt" target="_blank" rel="noopener noreferrer" style="color: var(--color-cyan);">README</a>.
       </p>
 
       <div class="about-grid">
         <div class="about-card">
-          <div class="about-card-icon">📉</div>
-          <h3 class="about-card-title">The Inflation Problem</h3>
+          <div class="about-card-icon">💸</div>
+          <h3 class="about-card-title">1. Fee Accrual (0.05%)</h3>
           <p class="about-card-text">
-            Traditional Web3 tokens suffer from predatory emission schedules, unlocked team allocations, and passive dilution. Without programmatic burn sinks, token velocity creates persistent downward pressure on liquid markets.
+            On every $pQT transfer, the Token-2022 program automatically withholds 5 basis points (0.05%) of the transferred amount on the recipient's token account, as a withheld balance (<code class="code-inline">withheld_amount</code>).
           </p>
         </div>
 
         <div class="about-card">
-          <div class="about-card-icon">⚡</div>
-          <h3 class="about-card-title">The Token-2022 Solution</h3>
+          <div class="about-card-icon">🔐</div>
+          <h3 class="about-card-title">2. Decentralized Collection</h3>
           <p class="about-card-text">
-            Leveraging Solana's next-generation Token-2022 Transfer Fee extension, $pQT transparently withholds 0.05% of every transaction on-chain. Fees are automatically queued inside individual token accounts without requiring central custodians.
+            The <code class="code-inline">withdraw_withheld_authority</code> is assigned to the program's PDA (<code class="code-inline">seeds = [b"vault-authority"]</code>). The PDA has no private key &mdash; the program signs on its behalf, so fees can never be withdrawn outside the contract.
           </p>
         </div>
 
         <div class="about-card">
-          <div class="about-card-icon">🤖</div>
-          <h3 class="about-card-title">Permissionless Execution</h3>
+          <div class="about-card-icon">⚙️</div>
+          <h3 class="about-card-title">3. harvest_and_distribute</h3>
           <p class="about-card-text">
-            Harvesting is entirely decentralized. By offering an instant 15% Crank Bounty on all harvested tokens, keeper bots and community members compete to execute harvest instructions, guaranteeing continuous supply destruction.
+            Any user or bot can call this public instruction. In a single atomic transaction it harvests withheld fees, burns 80%, pays an instant 15% bounty to the caller, and sends the remaining 5% to the Dev Treasury.
           </p>
         </div>
       </div>
 
       <div class="about-highlight-box">
         <div class="about-highlight-content">
-          <h3 class="about-highlight-title">Built for Immutable Trust &amp; Pure Deflation</h3>
+          <h3 class="about-highlight-title">Permissionless by Design</h3>
           <p class="about-highlight-desc">
-            $pQT operates with zero admin controls. Both Mint Authority and Freeze Authority have been permanently set to <code class="code-inline">None</code>. The treasury account is governed by a Program Derived Address (PDA), ensuring that protocol parameters can never be altered or compromised.
+            The team holds no separate key for collecting or withdrawing accumulated fees &mdash; that operation is only possible through the program itself, and anyone can trigger it. Freeze Authority is permanently revoked. Mint Authority and Fee Config Authority are currently held by the team and will be revoked once tokenomics parameters are finalized; verify the current status anytime with <code class="code-inline">spl-token display</code> or on Solscan.
           </p>
         </div>
         <a id="btn-buy-highlight" href="https://jup.ag" target="_blank" class="btn-buy" style="padding: 12px 24px; white-space: nowrap;">🛒 Trade $pQT Now</a>
@@ -376,7 +376,7 @@
           <button class="action-btn" id="btn-harvest" onclick="executeHarvestAndDistribute()" disabled style="opacity: 0.5;">
             <div class="action-title">
               <span>🔥 Execute Harvest &amp; Distribute</span>
-              <span style="font-size: 11px; color: var(--color-mint); background: rgba(111, 217, 168,0.1); padding: 2px 6px; border-radius: 4px;">Public Call</span>
+              <span style="font-size: 11px; color: var(--color-mint); background: rgba(52, 217, 160,0.1); padding: 2px 6px; border-radius: 4px;">Public Call</span>
             </div>
             <div class="action-desc">
               Calls <code class="code-inline">harvest_and_distribute</code>: collects fees, burns 80%, sends 15% bounty to you, and 5% to treasury.
@@ -390,6 +390,32 @@
             <div class="action-desc">Queries the RPC cluster for all Token-2022 accounts of the $pQT mint and reads accumulated withheld fees.</div>
           </button>
 
+          <button class="action-btn" id="btn-quick-harvest-toggle" onclick="toggleQuickHarvestPanel()">
+            <div class="action-title">
+              <span>⚡ Quick Harvest</span>
+              <span style="font-size: 11px; color: var(--color-cyan); background: rgba(43, 191, 171, 0.1); padding: 2px 6px; border-radius: 4px;">Custom List</span>
+            </div>
+            <div class="action-desc">Skip the full scan — harvest a specific set of token accounts. Add your own accounts to the curated list below.</div>
+          </button>
+
+          <div id="quick-harvest-panel" style="display: none; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; flex-direction: column; gap: 12px;">
+            <div>
+              <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Curated accounts (maintained by the project)</div>
+              <div id="owner-fee-sources-list" style="font-family: monospace; font-size: 12px; color: var(--color-mint); background: var(--bg-console); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; max-height: 100px; overflow-y: auto; white-space: pre-wrap; word-break: break-all;"></div>
+            </div>
+            <div>
+              <label for="user-fee-sources-input" style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 6px;">
+                Add your own token accounts (one per line, or comma-separated)
+              </label>
+              <textarea id="user-fee-sources-input" rows="3" placeholder="e.g. CSQZB1Ff6jff1njtpkEj7rAiE1XbqhSLojzskZtQgiU5" style="width: 100%; font-family: monospace; font-size: 12px; background: var(--bg-console); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; resize: vertical;" oninput="handleQuickHarvestInput()"></textarea>
+              <div id="quick-harvest-validation" style="font-size: 11px; color: var(--text-dim); margin-top: 4px;">Enter valid Solana addresses to enable Quick Harvest.</div>
+            </div>
+            <button class="action-btn" id="btn-run-quick-harvest" onclick="executeQuickHarvest()" disabled style="opacity: 0.5;">
+              <div class="action-title"><span>🚀 Run Quick Harvest</span></div>
+              <div class="action-desc">Calls <code class="code-inline">harvest_and_distribute</code> using the curated list above plus any accounts you added.</div>
+            </button>
+          </div>
+
           <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px;">
             <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">Status Summary</div>
             <div id="stat-found-accounts" style="font-size: 14px; font-weight: 700; color: var(--color-cyan);">Accounts with Fees: not scanned yet</div>
@@ -401,7 +427,7 @@
             <div class="dot dot-red"></div>
             <div class="dot dot-yellow"></div>
             <div class="dot dot-green"></div>
-            <span style="color: #7b818d; font-size: 11px; margin-left: 8px;">pqt-solana-cli v1.1.0 — web3-terminal</span>
+            <span style="color: #76827a; font-size: 11px; margin-left: 8px;">pqt-solana-cli v1.1.0 — web3-terminal</span>
           </div>
         </div>
       </div>
@@ -430,7 +456,7 @@
             <div class="security-name">RugCheck.xyz</div>
             <div class="security-desc">Automated smart contract risk assessment verifying revoked mint authority and liquidity lock parameters.</div>
           </div>
-          <div class="security-badge" style="color: var(--color-cyan); background: rgba(110, 198, 220, 0.08);">Good Score / Low Risk ↗</div>
+          <div class="security-badge" style="color: var(--color-cyan); background: rgba(43, 191, 171, 0.08);">Good Score / Low Risk ↗</div>
         </a>
 
         <a id="link-jupiter" href="https://jup.ag" target="_blank" class="security-card">
@@ -439,7 +465,7 @@
             <div class="security-name">Jupiter AG</div>
             <div class="security-desc">The leading liquidity aggregator on Solana for seamless low-slippage trading and direct $pQT swaps.</div>
           </div>
-          <div class="security-badge" style="color: var(--color-mint); background: rgba(111, 217, 168, 0.08);">Direct Swap / Buy ↗</div>
+          <div class="security-badge" style="color: var(--color-mint); background: rgba(52, 217, 160, 0.08);">Direct Swap / Buy ↗</div>
         </a>
 
         <a id="link-dexscreener" href="https://dexscreener.com" target="_blank" class="security-card">
@@ -448,7 +474,7 @@
             <div class="security-name">DexScreener</div>
             <div class="security-desc">Track real-time trading charts, pair volume, liquidity burn status, and dynamic price feeds.</div>
           </div>
-          <div class="security-badge" style="color: var(--color-purple); background: rgba(167, 139, 250, 0.08);">Live Analytics ↗</div>
+          <div class="security-badge" style="color: var(--color-purple); background: rgba(76, 184, 118, 0.08);">Live Analytics ↗</div>
         </a>
       </div>
     </section>
@@ -544,9 +570,13 @@
     const VAULT_AUTHORITY = new solanaWeb3.PublicKey("5NyvMUifoWkQenJQb7JKvYWj3aJFdnMWAewhT47hyiLk");
     const TREASURY_PUBKEY = new solanaWeb3.PublicKey("Aujqe2segKaz63LMZRgyxYJLin8rLZWQ97StP3xMbegb");
 
-    // Fallback sources used only until a real on-chain scan has been performed.
-    const FALLBACK_FEE_SOURCES = [
+    // Project-curated token accounts. Used (a) as a fallback for the regular
+    // Harvest button until a real on-chain scan has been performed, and
+    // (b) as the base list for Quick Harvest — edit this array to add or
+    // remove addresses you want harvested by default.
+    const OWNER_FEE_SOURCES = [
       new solanaWeb3.PublicKey("CSQZB1Ff6jff1njtpkEj7rAiE1XbqhSLojzskZtQgiU5"),
+      // new solanaWeb3.PublicKey("..."),
     ];
 
     const IDL = {
@@ -655,6 +685,7 @@
         const harvestBtn = document.getElementById('btn-harvest');
         harvestBtn.disabled = false;
         harvestBtn.style.opacity = "1";
+        handleQuickHarvestInput(); // re-evaluate Quick Harvest button now that a wallet is connected
 
         logToTerminal(`[WALLET] Successfully connected: ${walletPublicKey.toBase58()}`, 'log-success');
       } catch (err) {
@@ -680,6 +711,12 @@
       const harvestBtn = document.getElementById('btn-harvest');
       harvestBtn.disabled = true;
       harvestBtn.style.opacity = "0.5";
+
+      const quickHarvestBtn = document.getElementById('btn-run-quick-harvest');
+      if (quickHarvestBtn) {
+        quickHarvestBtn.disabled = true;
+        quickHarvestBtn.style.opacity = "0.5";
+      }
 
       logToTerminal('[WALLET] Wallet disconnected.', 'log-info');
     }
@@ -802,11 +839,14 @@
     }
 
     function getActiveFeeSources() {
-      return scannedFeeSources.length > 0 ? scannedFeeSources : FALLBACK_FEE_SOURCES;
+      return scannedFeeSources.length > 0 ? scannedFeeSources : OWNER_FEE_SOURCES;
     }
 
     // ======================= Harvest & Distribute =======================
-    function buildHarvestBuilder(preInstructions) {
+    // sourceAccounts is optional — defaults to getActiveFeeSources() (the
+    // regular Harvest button flow). Quick Harvest passes its own combined
+    // (curated + user-added) list explicitly.
+    function buildHarvestBuilder(preInstructions, sourceAccounts) {
       const callerTokenAccount = splToken.getAssociatedTokenAddressSync(
         MINT, walletPublicKey, false, splToken.TOKEN_2022_PROGRAM_ID
       );
@@ -817,7 +857,7 @@
         MINT, VAULT_AUTHORITY, true, splToken.TOKEN_2022_PROGRAM_ID
       );
 
-      const remainingAccounts = getActiveFeeSources().map((pubkey) => ({
+      const remainingAccounts = (sourceAccounts || getActiveFeeSources()).map((pubkey) => ({
         pubkey,
         isWritable: true,
         isSigner: false,
@@ -915,8 +955,157 @@
       }
     }
 
+    // ======================= Quick Harvest =======================
+    // Lets any visitor combine the project's curated OWNER_FEE_SOURCES with
+    // their own, freely-entered token accounts and run harvest_and_distribute
+    // against that exact combined list, without waiting for a full mint scan.
+
+    function renderOwnerFeeSourcesList() {
+      const el = document.getElementById('owner-fee-sources-list');
+      if (!el) return;
+      el.textContent = OWNER_FEE_SOURCES.map((pk) => pk.toBase58()).join('\n');
+    }
+
+    function toggleQuickHarvestPanel() {
+      const panel = document.getElementById('quick-harvest-panel');
+      if (!panel) return;
+      const isOpen = panel.style.display === 'flex';
+      panel.style.display = isOpen ? 'none' : 'flex';
+    }
+
+    // Parses freeform textarea input (newline- or comma-separated) into valid
+    // PublicKeys, de-duplicated and de-duplicated against OWNER_FEE_SOURCES.
+    // Returns { combined, addedCount, invalid } — never throws.
+    function parseQuickHarvestInput() {
+      const raw = (document.getElementById('user-fee-sources-input')?.value || '');
+      const tokens = raw.split(/[\s,]+/).map((t) => t.trim()).filter(Boolean);
+
+      const seen = new Set(OWNER_FEE_SOURCES.map((pk) => pk.toBase58()));
+      const combined = [...OWNER_FEE_SOURCES];
+      const invalid = [];
+
+      for (const token of tokens) {
+        let pk;
+        try {
+          pk = new solanaWeb3.PublicKey(token);
+          if (!solanaWeb3.PublicKey.isOnCurve(pk.toBytes())) {
+            // Token accounts are regular (on-curve) addresses, not PDAs —
+            // this guards against pasting a PDA or program address by mistake.
+            throw new Error('not a standard address');
+          }
+        } catch {
+          invalid.push(token);
+          continue;
+        }
+        const b58 = pk.toBase58();
+        if (!seen.has(b58)) {
+          seen.add(b58);
+          combined.push(pk);
+        }
+      }
+
+      return { combined, addedCount: combined.length - OWNER_FEE_SOURCES.length, invalid };
+    }
+
+    function handleQuickHarvestInput() {
+      const { addedCount, invalid } = parseQuickHarvestInput();
+      const msg = document.getElementById('quick-harvest-validation');
+      const runBtn = document.getElementById('btn-run-quick-harvest');
+      if (!msg || !runBtn) return;
+
+      if (invalid.length > 0) {
+        msg.style.color = 'var(--color-red)';
+        msg.textContent = `Invalid address(es): ${invalid.map(shortAddrString).join(', ')}`;
+      } else if (addedCount > 0) {
+        msg.style.color = 'var(--color-mint)';
+        msg.textContent = `${addedCount} account(s) added to the curated list.`;
+      } else {
+        msg.style.color = 'var(--text-dim)';
+        msg.textContent = 'Enter valid Solana addresses to enable Quick Harvest.';
+      }
+
+      const canRun = walletPublicKey && invalid.length === 0;
+      runBtn.disabled = !canRun;
+      runBtn.style.opacity = canRun ? '1' : '0.5';
+    }
+
+    function shortAddrString(s) {
+      return s.length > 12 ? `${s.slice(0, 4)}…${s.slice(-4)}` : s;
+    }
+
+    async function executeQuickHarvest() {
+      if (!walletPublicKey || !program) {
+        logToTerminal('[ERROR] Wallet is not connected!', 'log-warn');
+        return;
+      }
+
+      const { combined, addedCount, invalid } = parseQuickHarvestInput();
+      if (invalid.length > 0) {
+        logToTerminal(`[ERROR] Fix invalid address(es) before running: ${invalid.join(', ')}`, 'log-warn');
+        return;
+      }
+      if (combined.length === 0) {
+        logToTerminal('[ERROR] No fee source accounts in the combined list.', 'log-warn');
+        return;
+      }
+
+      logToTerminal(`[QUICK] Running harvest over ${combined.length} account(s) — ${OWNER_FEE_SOURCES.length} curated + ${addedCount} user-added.`, 'log-info');
+
+      try {
+        logToTerminal('[TX] Preparing associated token accounts...', 'log-info');
+
+        const callerTokenAccount = splToken.getAssociatedTokenAddressSync(
+          MINT, walletPublicKey, false, splToken.TOKEN_2022_PROGRAM_ID
+        );
+        const treasuryTokenAccount = splToken.getAssociatedTokenAddressSync(
+          MINT, TREASURY_PUBKEY, false, splToken.TOKEN_2022_PROGRAM_ID
+        );
+
+        const preInstructions = [];
+
+        const callerAtaIx = await maybeCreateAtaInstruction(
+          callerTokenAccount, walletPublicKey, walletPublicKey, 'Caller token account'
+        );
+        if (callerAtaIx) preInstructions.push(callerAtaIx);
+
+        const treasuryAtaIx = await maybeCreateAtaInstruction(
+          treasuryTokenAccount, TREASURY_PUBKEY, walletPublicKey, 'Treasury token account'
+        );
+        if (treasuryAtaIx) {
+          preInstructions.push(treasuryAtaIx);
+          logToTerminal('[TX] Note: you are paying the one-time rent for the treasury ATA.', 'log-warn');
+        }
+
+        logToTerminal(`[TX] Simulating quick harvest across ${combined.length} source account(s)...`, 'log-info');
+        const simulation = await buildHarvestBuilder(preInstructions, combined).simulate();
+
+        if (simulation.value.err) {
+          logToTerminal(`[ERROR] Simulation failed: ${JSON.stringify(simulation.value.err)}`, 'log-warn');
+          const logs = (simulation.value.logs || []).slice(-5);
+          logs.forEach((line) => logToTerminal(`  ${line}`, 'log-info'));
+          logToTerminal('[HINT] No accumulated fees on these accounts yet, or an invalid address was included.', 'log-info');
+          return;
+        }
+        logToTerminal('[TX] Simulation successful. Sending transaction...', 'log-info');
+
+        const txSig = await buildHarvestBuilder(preInstructions, combined).rpc();
+
+        logToTerminal(`[SUCCESS] Transaction confirmed! Hash: ${txSig}`, 'log-success');
+        logToTerminal(`[EXPLORER] https://explorer.solana.com/tx/${txSig}${CLUSTER_QUERY}`, 'log-info');
+      } catch (err) {
+        if (isUserRejection(err)) {
+          logToTerminal('[TX] Transaction rejected by user.', 'log-warn');
+        } else {
+          console.error(err);
+          logToTerminal(`[ERROR] Quick Harvest failed: ${err.message}`, 'log-warn');
+        }
+      }
+    }
+
     // ======================= Page Initialization =======================
     (function init() {
+      renderOwnerFeeSourcesList();
+
       const mintB58 = MINT.toBase58();
 
       // Point all buy/audit links at the actual mint address.
