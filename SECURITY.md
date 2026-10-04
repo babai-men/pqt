@@ -7,8 +7,7 @@ contract (`programs/pqt_protocol`) or in any related project infrastructure
 (website, deployment scripts, token authority configuration), please report it
 **privately** before any public disclosure:
 
-- Email: YOUR_EMAIL@example.com
-- Telegram: @YOUR_HANDLE
+- Email: pqtprotocol@gmail.com
 - X (direct message): [@pQTprotocol](https://x.com/pQTprotocol)
 
 Please do **not** open public GitHub issues or discuss the details in public
