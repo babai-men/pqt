@@ -6,7 +6,7 @@
 
 <p align="center">
   <a href="https://solana.com"><img src="https://img.shields.io/badge/Solana-Token--2022-3772FF?style=for-the-badge&logo=solana" alt="Solana Token-2022"></a>
-  <a href="https://www.anchor-lang.com"><img src="https://img.shields.io/badge/Anchor-v0.30+-C9A227?style=for-the-badge" alt="Anchor"></a>
+  <a href="https://www.anchor-lang.com"><img src="https://img.shields.io/badge/Anchor-v1.2+-C9A227?style=for-the-badge" alt="Anchor"></a>
   <a href="#-tokenomics--fee-distribution"><img src="https://img.shields.io/badge/Transfer_Fee-0.05%25_Fixed-FF7A59?style=for-the-badge" alt="Transfer Fee"></a>
   <a href="#-security--governance-matrix"><img src="https://img.shields.io/badge/Governance-100%25_Immutable-82E6AB?style=for-the-badge" alt="Immutable"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"></a>
