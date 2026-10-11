@@ -1,0 +1,19 @@
+skip_local_validator = true
+
+[toolchain]
+
+[features]
+resolution = true
+skip-lint = false
+
+[programs.localnet]
+pqt = "2hMVNWmcwERCFVAhzf2zZ3ZgZ4FzMfHUmYC8ut9juknX"
+
+[provider]
+cluster = "https://devnet.helius-rpc.com/?api-key=651e51bb-53df-443c-af05-b58f7d6f3fb0"
+wallet = "~/.config/solana/solflare-wallet.json"
+
+[scripts]
+test = "cargo test"
+
+[hooks]
